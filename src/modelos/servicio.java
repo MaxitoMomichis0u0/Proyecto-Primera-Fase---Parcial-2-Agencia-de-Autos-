@@ -40,7 +40,7 @@ public class servicio {
         this.fechaIngreso = fechaIngreso;
         this.estatus = estatus;
         this.fechaProxServicio = fechaProxServicio;
-        this.listaRefacciones = new ArrayList<>();
+        this.listaRefacciones = listaRefacciones;
     }
    
     // Constructor para insertar en la bdd.
@@ -129,6 +129,15 @@ public class servicio {
     }
     
     // Uso de patrón de diseño: State. Lo empleamos para cambiar entre estados de un servicio.
+    
+    public void avanzarEstado() {
+        if (this.estatus != null) {
+            this.estatus.AvanzarEstado(this);
+        }
+    }
 
+    public String getNombreEstatusTexto() {
+        return this.estatus != null ? this.estatus.getNombreEstado() : "En espera";
+    }
     
 }
