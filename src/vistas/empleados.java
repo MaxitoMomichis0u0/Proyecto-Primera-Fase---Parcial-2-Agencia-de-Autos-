@@ -4,6 +4,12 @@
  */
 package vistas;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author chuy
@@ -17,6 +23,47 @@ public class empleados extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public JTable getTablaEmpleados() {
+        return tablaEmpleados;
+    }
+
+    public JTextField getTxtCorreo() {
+        return txtCorreo;
+    }
+
+    public JTextField getTxtId() {
+        return txtId;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public JComboBox<String> getCboRol() {
+        return cboRol;
+    }
+
+    public JPasswordField getTxtpass() {
+        return txtpass;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +73,165 @@ public class empleados extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lblfolio1 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        lblmarca = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        lblfolio4 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblfolio5 = new javax.swing.JLabel();
+        lblano = new javax.swing.JLabel();
+        lblano1 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaEmpleados = new javax.swing.JTable();
+        txtpass = new javax.swing.JPasswordField();
+        cboRol = new javax.swing.JComboBox<>();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel8.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel7.add(jPanel8);
+
+        jPanel9.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel10.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel9.add(jPanel10);
+
+        jPanel7.add(jPanel9);
+
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 1300, 40));
+
+        jPanel3.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel4.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel3.add(jPanel4);
+
+        lblfolio1.setBackground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblfolio1.setForeground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setText("Empleados");
+        jPanel3.add(lblfolio1);
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 40));
+
+        txtCorreo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCorreo.setToolTipText("");
+        add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 280, -1));
+
+        lblmarca.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblmarca.setText("Correo:");
+        add(lblmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        txtId.setEditable(false);
+        txtId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtId.setToolTipText("");
+        add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
+
+        lblfolio4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio4.setText("ID:");
+        add(lblfolio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        txtNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNombre.setToolTipText("");
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 280, -1));
+
+        lblfolio5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio5.setText("Nombre:");
+        add(lblfolio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
+        lblano.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblano.setText("Contraseña:");
+        add(lblano, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+
+        lblano1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblano1.setText("Rol:");
+        add(lblano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 120, 30));
+
+        btnGuardar.setBackground(new java.awt.Color(255, 204, 102));
+        btnGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 120, 30));
+
+        btnModificar.setBackground(new java.awt.Color(102, 255, 204));
+        btnModificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 120, 30));
+
+        btnLimpiar.setBackground(new java.awt.Color(255, 255, 153));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 120, 30));
+
+        tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Correo", "Contraseña", "Rol"
+            }
+        ));
+        tablaEmpleados.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        jScrollPane1.setViewportView(tablaEmpleados);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 660, 410));
+
+        txtpass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 280, -1));
+
+        cboRol.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cboRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cboRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 280, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> cboRol;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblano;
+    private javax.swing.JLabel lblano1;
+    private javax.swing.JLabel lblfolio1;
+    private javax.swing.JLabel lblfolio4;
+    private javax.swing.JLabel lblfolio5;
+    private javax.swing.JLabel lblmarca;
+    private javax.swing.JTable tablaEmpleados;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables
 }

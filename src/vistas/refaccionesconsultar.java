@@ -26,19 +26,142 @@ public class refaccionesconsultar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lblfolio1 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        txtNombre = new javax.swing.JTextField();
+        lblfolio2 = new javax.swing.JLabel();
+        txtTel = new javax.swing.JTextField();
+        lblfolio3 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        tablaClientes = new javax.swing.JScrollPane();
+        TablaClientes = new javax.swing.JTable();
+        txtId = new javax.swing.JTextField();
+        lblfolio4 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel4.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel3.add(jPanel4);
+
+        lblfolio1.setBackground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblfolio1.setForeground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setText("Refacciones");
+        jPanel3.add(lblfolio1);
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 40));
+
+        jPanel7.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel8.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel7.add(jPanel8);
+
+        jPanel9.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel10.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel9.add(jPanel10);
+
+        jPanel7.add(jPanel9);
+
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 1300, 40));
+
+        txtNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNombre.setToolTipText("");
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 280, -1));
+
+        lblfolio2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio2.setText("Nombre:");
+        add(lblfolio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        txtTel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtTel.setToolTipText("");
+        add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 280, -1));
+
+        lblfolio3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio3.setText("Teléfono:");
+        add(lblfolio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 120, 30));
+
+        btnGuardar.setBackground(new java.awt.Color(255, 204, 102));
+        btnGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 120, 30));
+
+        btnModificar.setBackground(new java.awt.Color(102, 255, 204));
+        btnModificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 120, 30));
+
+        btnLimpiar.setBackground(new java.awt.Color(255, 255, 153));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, 30));
+
+        TablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Teléfono"
+            }
+        ));
+        TablaClientes.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        tablaClientes.setViewportView(TablaClientes);
+
+        add(tablaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
+
+        txtId.setEditable(false);
+        txtId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtId.setToolTipText("");
+        add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
+
+        lblfolio4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio4.setText("ID:");
+        add(lblfolio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaClientes;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lblfolio1;
+    private javax.swing.JLabel lblfolio2;
+    private javax.swing.JLabel lblfolio3;
+    private javax.swing.JLabel lblfolio4;
+    private javax.swing.JScrollPane tablaClientes;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 }
