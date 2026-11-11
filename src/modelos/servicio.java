@@ -2,6 +2,7 @@
 package modelos;
 
 import java.util.*;
+import patrones.EstadoEnEspera;
 import patrones.EstadosServicio;
 
 public class servicio {
@@ -15,6 +16,10 @@ public class servicio {
    private EstadosServicio estatus;
    private Date fechaProxServicio;
    private List<Integer> listaRefacciones;
+   
+   public servicio() {
+       
+   }
 
     // Constructor para leer de la bdd. (sin refacciones)
 
@@ -51,7 +56,7 @@ public class servicio {
         this.idAuto = idAuto;
         this.idEmpleado = idEmpleado;
         this.fechaIngreso = fechaIngreso;
-        this.estatus = estatus;
+        this.estatus = new EstadoEnEspera();
         this.fechaProxServicio = fechaProxServicio;
         this.listaRefacciones = new ArrayList<>();
     }
@@ -136,7 +141,7 @@ public class servicio {
         }
     }
 
-    public String getNombreEstatusTexto() {
+    public String getNombreEstado() {
         return this.estatus != null ? this.estatus.getNombreEstado() : "En espera";
     }
     

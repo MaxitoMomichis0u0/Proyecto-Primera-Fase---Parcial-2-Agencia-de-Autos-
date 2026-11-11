@@ -4,7 +4,6 @@ package datos;
 import java.sql.*;
 import javax.swing.*;
 import java.util.*;
-import patrones.conexion;
 import modelos.servicio;
 import patrones.*;
 
@@ -68,7 +67,9 @@ public class servicioDAO {
             JOptionPane.showMessageDialog(null, "Error al listar: " +error);
         }
         
+        BD.cerrarBD();
         return lista;
+        
     }
     
     public void insertarServicio(servicio s) {
@@ -89,6 +90,28 @@ public class servicioDAO {
             
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error al insertar servicio: " +error);
+        }
+        
+        BD.cerrarBD();
+        
+    }
+    
+    public void actualizarEstado(servicio s) {
+        
+        Connection cn = BD.conectarBD();
+        
+        try {
+            
+            PreparedStatement actualizar = cn.prepareStatement("UPDATE servicios SET estatus = ? WHERE id = ?");
+            
+            actualizar.setString(1, s.getNombreEstado());
+            actualizar.setInt(2, s.getId());
+            actualizar.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Se ha avanzado de estatus corectamente");
+            
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, "Error en la operación: " +error);
         }
         
     }

@@ -8,6 +8,13 @@ public class auto {
     private int ano;
     private String caracteristicas;
     
+    
+    // Constructor vacio
+    
+    public auto () {
+        
+    }
+    
     // Constructor para agregar carros.
 
     public auto(String modelo, String marca, int ano, String caracteristicas) {
