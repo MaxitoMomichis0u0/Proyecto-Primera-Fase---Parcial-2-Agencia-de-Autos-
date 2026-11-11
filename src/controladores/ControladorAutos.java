@@ -47,4 +47,41 @@ public class ControladorAutos {
          
      } */
      
+     public void modificarAuto(auto autoModificar) {
+         
+         for (auto a : listaAutos) {
+            if (a.getId() == autoModificar.getId()) {
+                a.setModelo(autoModificar.getModelo());
+                a.setMarca(autoModificar.getMarca());
+                a.setAno(autoModificar.getAno());
+                a.setCaracteristicas(autoModificar.getCaracteristicas());
+            }
+        }
+        
+        consultaSQL.modificarAuto(autoModificar);
+        
+        JOptionPane.showMessageDialog(null, "Auto modificado exitosamente");
+         
+     }
+     
+     public void eliminarAuto(int id) {
+         
+         for (int i = 0; i < listaAutos.size(); i++) {
+            if (listaAutos.get(i).getId() == id) {
+                listaAutos.remove(i);
+            }
+        }
+        
+        consultaSQL.eliminarAuto(id);
+        
+        JOptionPane.showMessageDialog(null, "Auto eliminado exitosamente");
+         
+     }
+     
+     public void buscarAuto(int id) {
+         
+         consultaSQL.buscarAuto(id);
+         
+     }
+     
 }
