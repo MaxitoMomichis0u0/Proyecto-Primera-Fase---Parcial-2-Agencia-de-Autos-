@@ -4,6 +4,9 @@
  */
 package vistas;
 
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
 /**
  *
  * @author braya
@@ -31,18 +34,35 @@ public class principal extends javax.swing.JFrame {
         contenedor = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menuCerrar = new javax.swing.JMenuItem();
+        menuSalir = new javax.swing.JMenuItem();
+        jmservicios = new javax.swing.JMenu();
         menuRegServ = new javax.swing.JMenuItem();
+        menuConServ = new javax.swing.JMenuItem();
+        jmcatalogos = new javax.swing.JMenu();
+        menuClientes = new javax.swing.JMenuItem();
+        menuAutos = new javax.swing.JMenuItem();
+        menuEmpleados = new javax.swing.JMenuItem();
+        menuRefacciones = new javax.swing.JMenuItem();
+        jmreportes = new javax.swing.JMenu();
+        menuDashboard = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         contenedor.setBackground(new java.awt.Color(102, 0, 102));
         contenedor.setLayout(new java.awt.BorderLayout());
 
-        jMenu1.setText("File");
+        jMenu1.setText("Acciones");
+
+        menuCerrar.setText("Cerrar Sesión");
+        jMenu1.add(menuCerrar);
+
+        menuSalir.setText("Salir");
+        jMenu1.add(menuSalir);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Servicios");
+        jmservicios.setText("Servicios");
 
         menuRegServ.setText("Registrar Servicio");
         menuRegServ.addActionListener(new java.awt.event.ActionListener() {
@@ -50,9 +70,35 @@ public class principal extends javax.swing.JFrame {
                 menuRegServActionPerformed(evt);
             }
         });
-        jMenu2.add(menuRegServ);
+        jmservicios.add(menuRegServ);
 
-        jMenuBar1.add(jMenu2);
+        menuConServ.setText("Consultar Servicio");
+        jmservicios.add(menuConServ);
+
+        jMenuBar1.add(jmservicios);
+
+        jmcatalogos.setText("Catálogos");
+
+        menuClientes.setText("Clientes");
+        jmcatalogos.add(menuClientes);
+
+        menuAutos.setText("Autos");
+        jmcatalogos.add(menuAutos);
+
+        menuEmpleados.setText("Empleados");
+        jmcatalogos.add(menuEmpleados);
+
+        menuRefacciones.setText("Refacciones");
+        jmcatalogos.add(menuRefacciones);
+
+        jMenuBar1.add(jmcatalogos);
+
+        jmreportes.setText("Reportes");
+
+        menuDashboard.setText("Dashboard");
+        jmreportes.add(menuDashboard);
+
+        jMenuBar1.add(jmreportes);
 
         setJMenuBar(jMenuBar1);
 
@@ -60,7 +106,7 @@ public class principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,10 +118,47 @@ public class principal extends javax.swing.JFrame {
 
     private void menuRegServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegServActionPerformed
         // TODO add your handling code here:
-        registrarservicio FrmRegServ = new registrarservicio();
-        contenedor.removeAll();
-        contenedor.add(FrmRegServ, java.awt.BorderLayout.CENTER);
     }//GEN-LAST:event_menuRegServActionPerformed
+
+    public JPanel getContenedor() {
+        return contenedor;
+    }
+
+    public JMenuItem getMenuAutos() {
+        return menuAutos;
+    }
+
+    public JMenuItem getMenuCerrar() {
+        return menuCerrar;
+    }
+
+    public JMenuItem getMenuClientes() {
+        return menuClientes;
+    }
+
+    public JMenuItem getMenuConServ() {
+        return menuConServ;
+    }
+
+    public JMenuItem getMenuDashboard() {
+        return menuDashboard;
+    }
+
+    public JMenuItem getMenuEmpleados() {
+        return menuEmpleados;
+    }
+
+    public JMenuItem getMenuRefacciones() {
+        return menuRefacciones;
+    }
+
+    public JMenuItem getMenuRegServ() {
+        return menuRegServ;
+    }
+
+    public JMenuItem getMenuSalir() {
+        return menuSalir;
+    }
 
     /**
      * @param args the command line arguments
@@ -105,8 +188,18 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenedor;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jmcatalogos;
+    private javax.swing.JMenu jmreportes;
+    private javax.swing.JMenu jmservicios;
+    private javax.swing.JMenuItem menuAutos;
+    private javax.swing.JMenuItem menuCerrar;
+    private javax.swing.JMenuItem menuClientes;
+    private javax.swing.JMenuItem menuConServ;
+    private javax.swing.JMenuItem menuDashboard;
+    private javax.swing.JMenuItem menuEmpleados;
+    private javax.swing.JMenuItem menuRefacciones;
     private javax.swing.JMenuItem menuRegServ;
+    private javax.swing.JMenuItem menuSalir;
     // End of variables declaration//GEN-END:variables
 }
