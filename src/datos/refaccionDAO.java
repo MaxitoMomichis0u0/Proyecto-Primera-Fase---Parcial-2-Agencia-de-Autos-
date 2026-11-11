@@ -43,5 +43,8 @@ public class refaccionDAO {
         return lista;
         
     }
+    public void insertarRefaccipn(refaccion r){
+        Connection cn
+    }
     
 }

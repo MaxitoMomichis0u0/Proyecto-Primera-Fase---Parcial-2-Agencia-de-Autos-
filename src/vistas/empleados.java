@@ -39,6 +39,10 @@ public class empleados extends javax.swing.JPanel {
         return btnModificar;
     }
 
+    public JComboBox<String> getCboRol() {
+        return cboRol;
+    }
+
     public JTable getTablaEmpleados() {
         return tablaEmpleados;
     }
@@ -55,13 +59,10 @@ public class empleados extends javax.swing.JPanel {
         return txtNombre;
     }
 
-    public JComboBox<String> getCboRol() {
-        return cboRol;
-    }
-
     public JPasswordField getTxtpass() {
         return txtpass;
     }
+
     
     
     /**
@@ -198,7 +199,7 @@ public class empleados extends javax.swing.JPanel {
         tablaEmpleados.setSelectionBackground(new java.awt.Color(255, 153, 153));
         jScrollPane1.setViewportView(tablaEmpleados);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 660, 410));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
 
         txtpass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 280, -1));

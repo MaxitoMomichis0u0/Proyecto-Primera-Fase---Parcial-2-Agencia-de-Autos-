@@ -6,6 +6,7 @@ package vistas;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -37,14 +38,15 @@ public class consultarservicio extends javax.swing.JPanel {
         return btnEstado;
     }
 
-    public JScrollPane getTablaServicios() {
-        return tablaServicios;
+    public JTable getTablaServ() {
+        return tablaServ;
     }
 
     public JTextField getTxtFolio() {
         return txtFolio;
     }
-    
+
+ 
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +66,7 @@ public class consultarservicio extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         btnEliminar = new javax.swing.JButton();
-        tablaServicios = new javax.swing.JScrollPane();
+        Scroll = new javax.swing.JScrollPane();
         tablaServ = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
         btnEstado = new javax.swing.JButton();
@@ -122,9 +124,9 @@ public class consultarservicio extends javax.swing.JPanel {
             }
         ));
         tablaServ.setSelectionBackground(new java.awt.Color(255, 153, 153));
-        tablaServicios.setViewportView(tablaServ);
+        Scroll.setViewportView(tablaServ);
 
-        add(tablaServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
+        add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
 
         btnBuscar.setBackground(new java.awt.Color(255, 204, 102));
         btnBuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -151,6 +153,7 @@ public class consultarservicio extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane Scroll;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDetalles;
     private javax.swing.JButton btnEliminar;
@@ -164,7 +167,6 @@ public class consultarservicio extends javax.swing.JPanel {
     private javax.swing.JLabel lblfolio;
     private javax.swing.JLabel lblfolio1;
     private javax.swing.JTable tablaServ;
-    private javax.swing.JScrollPane tablaServicios;
     private javax.swing.JTextField txtFolio;
     // End of variables declaration//GEN-END:variables
 }

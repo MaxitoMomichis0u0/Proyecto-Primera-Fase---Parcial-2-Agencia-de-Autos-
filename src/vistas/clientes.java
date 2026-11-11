@@ -22,6 +22,10 @@ public class clientes extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTable getTablaClientes() {
+        return TablaClientes;
+    }
+
     public JButton getBtnEliminar() {
         return btnEliminar;
     }
@@ -38,11 +42,9 @@ public class clientes extends javax.swing.JPanel {
         return btnModificar;
     }
 
-    public JScrollPane getTablaClientes() {
-        return tablaClientes;
+    public JTextField getTxtId() {
+        return txtId;
     }
-
-
 
     public JTextField getTxtNombre() {
         return txtNombre;
@@ -50,10 +52,6 @@ public class clientes extends javax.swing.JPanel {
 
     public JTextField getTxtTel() {
         return txtTel;
-    }
-
-    public JTextField getTxtId() {
-        return txtId;
     }
 
     /**
@@ -80,7 +78,7 @@ public class clientes extends javax.swing.JPanel {
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        tablaClientes = new javax.swing.JScrollPane();
+        Scroll = new javax.swing.JScrollPane();
         TablaClientes = new javax.swing.JTable();
         txtId = new javax.swing.JTextField();
         lblfolio3 = new javax.swing.JLabel();
@@ -167,9 +165,9 @@ public class clientes extends javax.swing.JPanel {
             }
         ));
         TablaClientes.setSelectionBackground(new java.awt.Color(255, 153, 153));
-        tablaClientes.setViewportView(TablaClientes);
+        Scroll.setViewportView(TablaClientes);
 
-        add(tablaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
+        add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -183,6 +181,7 @@ public class clientes extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane Scroll;
     private javax.swing.JTable TablaClientes;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
@@ -198,7 +197,6 @@ public class clientes extends javax.swing.JPanel {
     private javax.swing.JLabel lblfolio1;
     private javax.swing.JLabel lblfolio2;
     private javax.swing.JLabel lblfolio3;
-    private javax.swing.JScrollPane tablaClientes;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTel;

@@ -39,10 +39,6 @@ public class registrarservicio extends javax.swing.JPanel {
         return cboRefaccion;
     }
 
-    public JDateChooser getJdcFecha() {
-        return jdcFecha;
-    }
-
     public JTable getTablaRef() {
         return tablaRef;
     }
@@ -55,6 +51,7 @@ public class registrarservicio extends javax.swing.JPanel {
         return txtPersonaEntrega;
     }
 
+   
 
     
     
@@ -150,7 +147,7 @@ public class registrarservicio extends javax.swing.JPanel {
         lblfolio1.setBackground(new java.awt.Color(255, 255, 255));
         lblfolio1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblfolio1.setForeground(new java.awt.Color(255, 255, 255));
-        lblfolio1.setText("Refacciones");
+        lblfolio1.setText("Registrar Servicio");
         jPanel3.add(lblfolio1);
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 40));

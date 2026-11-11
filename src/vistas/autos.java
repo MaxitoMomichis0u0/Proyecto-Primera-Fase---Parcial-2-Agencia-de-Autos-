@@ -6,6 +6,7 @@ package vistas;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -51,6 +52,10 @@ public class autos extends javax.swing.JPanel {
         return txtCarac;
     }
 
+    public JScrollPane getTxtCaracteristicas() {
+        return txtCaracteristicas;
+    }
+
     public JTextField getTxtId() {
         return txtId;
     }
@@ -59,14 +64,10 @@ public class autos extends javax.swing.JPanel {
         return txtMarca;
     }
 
-
     public JTextField getTxtModelo() {
         return txtModelo;
     }
 
-    public JTextField getTxtNombre() {
-        return txtMarca;
-    }
     
     
     /**

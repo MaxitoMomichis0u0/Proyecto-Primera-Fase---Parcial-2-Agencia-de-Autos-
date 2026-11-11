@@ -4,6 +4,11 @@
  */
 package vistas;
 
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author chuy
@@ -17,6 +22,40 @@ public class refaccionesconsultar extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public JTable getTablaRef() {
+        return tablaRef;
+    }
+
+    public JTextField getTxtId() {
+        return txtId;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public JTextField getTxtPrecio() {
+        return txtPrecio;
+    }
+
+   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,14 +74,14 @@ public class refaccionesconsultar extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         txtNombre = new javax.swing.JTextField();
         lblfolio2 = new javax.swing.JLabel();
-        txtTel = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         lblfolio3 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        tablaClientes = new javax.swing.JScrollPane();
-        TablaClientes = new javax.swing.JTable();
+        Scroll = new javax.swing.JScrollPane();
+        tablaRef = new javax.swing.JTable();
         txtId = new javax.swing.JTextField();
         lblfolio4 = new javax.swing.JLabel();
 
@@ -83,12 +122,12 @@ public class refaccionesconsultar extends javax.swing.JPanel {
         lblfolio2.setText("Nombre:");
         add(lblfolio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
-        txtTel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtTel.setToolTipText("");
-        add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 280, -1));
+        txtPrecio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtPrecio.setToolTipText("");
+        add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 280, -1));
 
         lblfolio3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblfolio3.setText("Teléfono:");
+        lblfolio3.setText("Precio:");
         add(lblfolio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
@@ -116,7 +155,7 @@ public class refaccionesconsultar extends javax.swing.JPanel {
         btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, 30));
 
-        TablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tablaRef.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -124,13 +163,13 @@ public class refaccionesconsultar extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Teléfono"
+                "ID", "Nombre", "Precio"
             }
         ));
-        TablaClientes.setSelectionBackground(new java.awt.Color(255, 153, 153));
-        tablaClientes.setViewportView(TablaClientes);
+        tablaRef.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        Scroll.setViewportView(tablaRef);
 
-        add(tablaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
+        add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 660, 410));
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -144,7 +183,7 @@ public class refaccionesconsultar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaClientes;
+    private javax.swing.JScrollPane Scroll;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
@@ -159,9 +198,9 @@ public class refaccionesconsultar extends javax.swing.JPanel {
     private javax.swing.JLabel lblfolio2;
     private javax.swing.JLabel lblfolio3;
     private javax.swing.JLabel lblfolio4;
-    private javax.swing.JScrollPane tablaClientes;
+    private javax.swing.JTable tablaRef;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTel;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
