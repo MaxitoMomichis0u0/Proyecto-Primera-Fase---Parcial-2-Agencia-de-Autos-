@@ -46,4 +46,12 @@ public class ControladorServicios {
          consultaSQL.actualizarEstatus(s);      
      } 
      */
+     
+     /*
+     public void agregarRefacciones(servicio s, int idRef) {
+         
+         s.agregarRefaccion(idRef);
+         consultaSQL.agregarRefaccionesAlServicio(s.getId(), idRef);
+         
+     }*/
 }

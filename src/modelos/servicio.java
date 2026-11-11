@@ -133,6 +133,16 @@ public class servicio {
         this.listaRefacciones = listaRefacciones;
     }
     
+    public void agregarRefaccion(int idRefaccion) {
+        
+        if (this.listaRefacciones == null) {
+            this.listaRefacciones = new ArrayList<>();
+        }
+        
+        this.listaRefacciones.add(idRefaccion);
+        
+    }
+    
     // Uso de patrón de diseño: State. Lo empleamos para cambiar entre estados de un servicio.
     
     public void avanzarEstado() {

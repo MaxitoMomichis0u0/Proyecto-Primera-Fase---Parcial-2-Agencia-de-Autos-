@@ -115,4 +115,28 @@ public class servicioDAO {
         }
         
     }
+    
+    public void agregarRefaccionesAlServicio (int idServ, int idRef) {
+        
+        Connection cn = BD.conectarBD();
+        
+        try {
+            
+            PreparedStatement agregarRef = cn.prepareStatement("INSERT INTO refaccion_por_servicio (id_servicio, id_refaccion) VALUES (?,?)");
+            
+            agregarRef.setInt(1, idServ);
+            agregarRef.setInt(2, idRef);
+            agregarRef.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Refaccion agregada al informe del servicio");
+            
+            
+        } catch (Exception error) {
+            
+            JOptionPane.showMessageDialog(null, "Error al hacer la operación: " +error);
+            
+        }
+        
+        
+    }
 }
