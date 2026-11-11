@@ -4,6 +4,12 @@
  */
 package vistas;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author chuy
@@ -17,6 +23,52 @@ public class autos extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JButton getBtnModificar() {
+        return btnModificar;
+    }
+
+    public JTable getTablaAutos() {
+        return tablaAutos;
+    }
+
+    public JTextField getTxtAno() {
+        return txtAno;
+    }
+
+    public JTextArea getTxtCarac() {
+        return txtCarac;
+    }
+
+    public JTextField getTxtId() {
+        return txtId;
+    }
+
+    public JTextField getTxtMarca() {
+        return txtMarca;
+    }
+
+
+    public JTextField getTxtModelo() {
+        return txtModelo;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtMarca;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +78,172 @@ public class autos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lblfolio1 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        txtMarca = new javax.swing.JTextField();
+        lblmarca = new javax.swing.JLabel();
+        txtAno = new javax.swing.JTextField();
+        lblcarac = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
+        lblfolio4 = new javax.swing.JLabel();
+        txtModelo = new javax.swing.JTextField();
+        lblfolio5 = new javax.swing.JLabel();
+        txtCaracteristicas = new javax.swing.JScrollPane();
+        txtCarac = new javax.swing.JTextArea();
+        lblano = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaAutos = new javax.swing.JTable();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel4.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel3.add(jPanel4);
+
+        lblfolio1.setBackground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblfolio1.setForeground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setText("Autos");
+        jPanel3.add(lblfolio1);
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 40));
+
+        jPanel7.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel8.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel7.add(jPanel8);
+
+        jPanel9.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel10.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel9.add(jPanel10);
+
+        jPanel7.add(jPanel9);
+
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 1300, 40));
+
+        txtMarca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtMarca.setToolTipText("");
+        add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 280, -1));
+
+        lblmarca.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblmarca.setText("Marca:");
+        add(lblmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        txtAno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtAno.setToolTipText("");
+        add(txtAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 280, -1));
+
+        lblcarac.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblcarac.setText("Características:");
+        add(lblcarac, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 240, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 120, 30));
+
+        btnGuardar.setBackground(new java.awt.Color(255, 204, 102));
+        btnGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 120, 30));
+
+        btnModificar.setBackground(new java.awt.Color(102, 255, 204));
+        btnModificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 120, 30));
+
+        btnLimpiar.setBackground(new java.awt.Color(255, 255, 153));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 120, 30));
+
+        txtId.setEditable(false);
+        txtId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtId.setToolTipText("");
+        add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
+
+        lblfolio4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio4.setText("ID:");
+        add(lblfolio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        txtModelo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtModelo.setToolTipText("");
+        add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 280, -1));
+
+        lblfolio5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio5.setText("Modelo:");
+        add(lblfolio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
+        txtCaracteristicas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        txtCarac.setColumns(20);
+        txtCarac.setRows(5);
+        txtCaracteristicas.setViewportView(txtCarac);
+
+        add(txtCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 280, -1));
+
+        lblano.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblano.setText("Año:");
+        add(lblano, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+
+        tablaAutos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Modelo", "Marca", "Año", "Características"
+            }
+        ));
+        tablaAutos.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        jScrollPane1.setViewportView(tablaAutos);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 660, 410));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblano;
+    private javax.swing.JLabel lblcarac;
+    private javax.swing.JLabel lblfolio1;
+    private javax.swing.JLabel lblfolio4;
+    private javax.swing.JLabel lblfolio5;
+    private javax.swing.JLabel lblmarca;
+    private javax.swing.JTable tablaAutos;
+    private javax.swing.JTextField txtAno;
+    private javax.swing.JTextArea txtCarac;
+    private javax.swing.JScrollPane txtCaracteristicas;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtModelo;
     // End of variables declaration//GEN-END:variables
 }

@@ -43,10 +43,6 @@ public class registrarservicio extends javax.swing.JPanel {
         return jdcFecha;
     }
 
-    public JLabel getRegdfg() {
-        return lblfolio;
-    }
-
     public JTable getTablaRef() {
         return tablaRef;
     }
