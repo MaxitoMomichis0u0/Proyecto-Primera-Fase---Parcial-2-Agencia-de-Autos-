@@ -69,4 +69,31 @@ public class clienteDAO {
         
     }
     
+    public void modificarCliente(cliente c){
+        Connection cn= BD.conectarBD();
+        
+        try {
+            PreparedStatement actu= cn.prepareStatement("update clientes set nombre=?, telefono=? where id=?");
+            actu.setString(1, c.getNombre());
+            actu.setString(2, c.getTelefono());
+            actu.setInt(3, c.getId());
+            actu.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error:" +e);
+        }
+        BD.cerrarBD();
+    }
+    
+    public void eliminarCliente(int id){
+        Connection cn= BD.conectarBD();
+        
+        try {
+            PreparedStatement eliminar= cn.prepareStatement("delete from clientes where id=?");
+            eliminar.setInt(1, id);
+            eliminar.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error:" +e);
+        }
+        BD.cerrarBD();
+    }
 }

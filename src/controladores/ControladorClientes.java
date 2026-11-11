@@ -17,9 +17,7 @@ public class ControladorClientes {
     private List <cliente> listaClientes;
     private clienteDAO consultaSQL;
     
-     public ControladorClientes() {
-        this.consultaSQL = new clienteDAO();
-        this.listaClientes =  consultaSQL.listarClientes();
+     public ControladorClientes(clientes vista) {
         this.vista= vista;
         this.dao= new clienteDAO();
         cargarTabla();
