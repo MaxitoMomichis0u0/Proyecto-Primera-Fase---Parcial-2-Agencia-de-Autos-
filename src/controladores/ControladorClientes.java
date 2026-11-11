@@ -5,35 +5,55 @@ import java.util.*;
 import datos.clienteDAO;
 import javax.swing.*;
 import modelos.cliente;
+import datos.clienteDAO;
+import javax.swing.table.DefaultTableModel;
+import modelos.cliente;
+import vistas.clientes;
 
 public class ControladorClientes {
     
+    private clientes vista;
+    private clienteDAO dao;
     private List <cliente> listaClientes;
     private clienteDAO consultaSQL;
     
      public ControladorClientes() {
         this.consultaSQL = new clienteDAO();
         this.listaClientes =  consultaSQL.listarClientes();
+        this.vista= vista;
+        this.dao= new clienteDAO();
+        cargarTabla();
+        
+        this.vista.getBtnGuardar().addActionListener(e -> guardarCliente());
+        this.vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
     }
          
-     /*
-     public void insertarCliente() {
-         cliente c = new cliente();
-         
-         c.setNombre();
-         c.setTelefono();
      
-         try {
-             
-            if (consultaSQL.insertarCliente(c)) {
-                JOptionPane.showMessageDialog(null, "Cliente insertado exitosamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "El cliente NO fue insertado");
-            }
-             
-         } catch (Exception error) {
-             JOptionPane.showMessageDialog(null, "Error al hacer la operación: " +error);
+     public void guardarCliente() {
+     String nombre= vista.getTxtNombre().getText();
+     String telefono= vista.getTxtTel().getText();
+     cliente c= new cliente(0, nombre, telefono);
+     dao.insertarCliente(c);
+     cargarTabla();
+     limpiarCampos();
+
+     } 
+     
+     private void cargarTabla(){
+         DefaultTableModel modelo= (DefaultTableModel) vista.getTablaClientes().getModel();
+         modelo.setRowCount(0);
+         
+         List<cliente> lista= dao.listarClientes();
+         for(cliente c: lista){
+             modelo.addRow(new Object[]{
+                 c.getId(), c.getNombre(), c.getTelefono()
+             });
          }
-     } */
+     }
+     
+     private void limpiarCampos(){
+         vista.getTxtNombre().setText("");
+         vista.getTxtTel().setText("");
+     }
     
 }
