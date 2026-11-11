@@ -37,7 +37,7 @@ public class ControladorServicios {
          } catch (Exception error) {
              JOptionPane.showMessageDialog(null, "Error al hacer la operación: " +error);
          }
-     } */
+     } 
      
      /*
      public void avanzarEstado(servicio s) {
@@ -45,5 +45,5 @@ public class ControladorServicios {
          s.avanzarEstado();
          consultaSQL.actualizarEstatus(s);      
      } 
-     /*
+     */
 }
