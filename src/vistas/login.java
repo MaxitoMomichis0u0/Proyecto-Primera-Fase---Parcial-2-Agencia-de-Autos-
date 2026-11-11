@@ -79,6 +79,8 @@ public class login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setText("Usuario");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 70, 30));
+
+        txtpass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 270, -1));
 
         pack();
