@@ -96,7 +96,7 @@ public class servicioDAO {
         
     }
     
-    public void actualizarEstado(servicio s) {
+    public void actualizarEstatus(servicio s) {
         
         Connection cn = BD.conectarBD();
         

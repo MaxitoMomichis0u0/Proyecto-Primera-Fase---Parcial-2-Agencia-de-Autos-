@@ -22,16 +22,16 @@ public class ControladorServicios {
          servicio s = new servicio();
          
          s.setFolio();
-         s.setMarca();
-         s.setAno();
-         s.setCaracteristicas();
+         s.setIdCliente();
+         s.setIdAuto();
+         s.setIdEmpleado();
          
          try {
              
-            if (consultaSQL.insertarAuto(a)) {
-                JOptionPane.showMessageDialog(null, "Auto insertado exitosamente");
+            if (consultaSQL.insertarServicio(s)) {
+                JOptionPane.showMessageDialog(null, "Servicio insertado exitosamente");
             } else {
-                JOptionPane.showMessageDialog(null, "El auto NO fue insertado");
+                JOptionPane.showMessageDialog(null, "El servicio NO fue insertado");
             }
              
          } catch (Exception error) {
@@ -39,11 +39,11 @@ public class ControladorServicios {
          }
      } */
      
-     /* Aquí puedes usar la listaAutos para mostrarlas en alguna parte de la vista.
-     public void mostrarAutos() {
+     /*
+     public void avanzarEstado(servicio s) {
          
-         
-         
-     } */
-    
+         s.avanzarEstado();
+         consultaSQL.actualizarEstatus(s);      
+     } 
+     /*
 }
