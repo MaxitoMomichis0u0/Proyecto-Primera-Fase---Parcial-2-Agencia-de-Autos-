@@ -60,7 +60,7 @@ public class refaccionDAO {
     public void modificarRefaccion(refaccion r){
     Connection cn= BD.conectarBD();
         try {
-            PreparedStatement actualizar= cn.prepareStatement("update refacciones set nombre=?,precio=?, where id=?");
+            PreparedStatement actualizar= cn.prepareStatement("update refacciones set nombre=?,precio=? where id=?");
             actualizar.setString(1, r.getNombre());
             actualizar.setDouble(2, r.getPrecio());
             actualizar.setInt(3, r.getId());

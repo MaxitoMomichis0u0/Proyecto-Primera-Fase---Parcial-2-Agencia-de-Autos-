@@ -21,6 +21,10 @@ public class controladorRefacciones {
         this.vista = vista;
         this.dao= new refaccionDAO();
         vista.getBtnGuardar().addActionListener(e -> guardar());
+        vista.getBtnModificar().addActionListener(e -> modificar());
+        vista.getBtnEliminar().addActionListener(e -> eliminar());
+        vista.getTablaRef().getSelectionModel().addListSelectionListener(e -> seleccionarFila());
+        vista.getBtnLimpiar().addActionListener(e -> limpiar());
         cargarTabla();
     }
     
@@ -59,5 +63,42 @@ public class controladorRefacciones {
         vista.getTablaRef().setModel(modelo);
     }
     
+    private void seleccionarFila(){
+        int fila= vista.getTablaRef().getSelectedRow();
+        if(fila >= 0){
+            vista.getTxtId().setText(vista.getTablaRef().getValueAt(fila, 0).toString());
+            vista.getTxtNombre().setText(vista.getTablaRef().getValueAt(fila, 1).toString());
+            vista.getTxtPrecio().setText(vista.getTablaRef().getValueAt(fila, 2).toString());
+        }
+    }
     
+    private void modificar(){
+        try {
+            refaccion r= new refaccion(Integer.parseInt(vista.getTxtId().getText()), vista.getTxtNombre().getText(),
+                    Double.parseDouble(vista.getTxtPrecio().getText()));
+            dao.modificarRefaccion(r);
+            JOptionPane.showMessageDialog(null,"Se ha actualizado la refacción :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+                    
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void eliminar(){
+        try {
+            int id= Integer.parseInt(vista.getTxtId().getText());
+            dao.eliminarRefaccion(id);
+            JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+        } catch (Exception e) {JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
+    
+    private void limpiar(){
+        vista.getTxtId().setText("");
+        vista.getTxtNombre().setText("");
+        vista.getTxtPrecio().setText("");
+    }
 }
