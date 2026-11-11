@@ -1,6 +1,7 @@
 package vistas;
 
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
 
 public class registrarservicio extends javax.swing.JPanel {
@@ -9,6 +10,58 @@ public class registrarservicio extends javax.swing.JPanel {
     public registrarservicio() {
         initComponents();
     }
+
+    public JButton getBtnAggRef() {
+        return btnAggRef;
+    }
+
+    public JButton getBtnEliminarRef() {
+        return btnEliminarRef;
+    }
+
+    public JButton getBtnRegServ() {
+        return btnRegServ;
+    }
+
+    public JComboBox<String> getCboAuto() {
+        return cboAuto;
+    }
+
+    public JComboBox<String> getCboCliente() {
+        return cboCliente;
+    }
+
+    public JComboBox<String> getCboEmpleado() {
+        return cboEmpleado;
+    }
+
+    public JComboBox<String> getCboRefaccion() {
+        return cboRefaccion;
+    }
+
+    public JDateChooser getJdcFecha() {
+        return jdcFecha;
+    }
+
+    public JLabel getRegdfg() {
+        return lblfolio;
+    }
+
+    public JTable getTablaRef() {
+        return tablaRef;
+    }
+
+    public JTextField getTxtFolio() {
+        return txtFolio;
+    }
+
+    public JTextField getTxtPersonaEntrega() {
+        return txtPersonaEntrega;
+    }
+
+
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -19,71 +72,181 @@ public class registrarservicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtFFolio = new javax.swing.JTextField();
+        txtFolio = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         cboCliente = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cboAuto = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         cboEmpleado = new javax.swing.JComboBox<>();
         txtPersonaEntrega = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lblfolio1 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        lblfolio = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cboRefaccion = new javax.swing.JComboBox<>();
+        btnEliminarRef = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaRef = new javax.swing.JTable();
+        btnRegServ = new javax.swing.JButton();
+        btnAggRef = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(1300, 750));
+        setPreferredSize(new java.awt.Dimension(1300, 750));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtFFolio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtFFolio.setToolTipText("");
-        add(txtFFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 280, -1));
+        txtFolio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtFolio.setToolTipText("");
+        add(txtFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Cliente:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         cboCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cboCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 280, -1));
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setText("Folio:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        add(cboCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 280, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Auto:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         cboAuto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cboAuto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cboAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 280, -1));
+        add(cboAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 280, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Empleado:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         cboEmpleado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cboEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cboEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 280, -1));
+        add(cboEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 280, -1));
 
         txtPersonaEntrega.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtPersonaEntrega.setToolTipText("");
-        add(txtPersonaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 280, -1));
+        add(txtPersonaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 280, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setText("Persona que entrega:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        jLabel5.setText("Fecha del siguiente servicio:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+
+        jdcFecha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 280, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel6.setText("Persona que entrega:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel4.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel3.add(jPanel4);
+
+        lblfolio1.setBackground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblfolio1.setForeground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setText("Refacciones");
+        jPanel3.add(lblfolio1);
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 40));
+
+        jPanel7.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel8.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel7.add(jPanel8);
+
+        jPanel9.setBackground(new java.awt.Color(255, 0, 51));
+
+        jPanel10.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel9.add(jPanel10);
+
+        jPanel7.add(jPanel9);
+
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 1300, 40));
+
+        lblfolio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblfolio.setText("Folio:");
+        add(lblfolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel8.setText("Tipo de refacción:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+
+        cboRefaccion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cboRefaccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cboRefaccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 280, -1));
+
+        btnEliminarRef.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminarRef.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEliminarRef.setText("Eliminar Refacción");
+        btnEliminarRef.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnEliminarRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 170, 50));
+
+        tablaRef.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Precio"
+            }
+        ));
+        tablaRef.setSelectionBackground(new java.awt.Color(255, 153, 153));
+        jScrollPane1.setViewportView(tablaRef);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 660, 410));
+
+        btnRegServ.setBackground(new java.awt.Color(0, 255, 51));
+        btnRegServ.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnRegServ.setText("Registrar Servicio");
+        btnRegServ.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnRegServ, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 170, 50));
+
+        btnAggRef.setBackground(new java.awt.Color(255, 204, 102));
+        btnAggRef.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAggRef.setText("Agregar Refacción");
+        btnAggRef.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnAggRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 170, 50));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAggRef;
+    private javax.swing.JButton btnEliminarRef;
+    private javax.swing.JButton btnRegServ;
     private javax.swing.JComboBox<String> cboAuto;
     private javax.swing.JComboBox<String> cboCliente;
     private javax.swing.JComboBox<String> cboEmpleado;
+    private javax.swing.JComboBox<String> cboRefaccion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txtFFolio;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdcFecha;
+    private javax.swing.JLabel lblfolio;
+    private javax.swing.JLabel lblfolio1;
+    private javax.swing.JTable tablaRef;
+    private javax.swing.JTextField txtFolio;
     private javax.swing.JTextField txtPersonaEntrega;
     // End of variables declaration//GEN-END:variables
 }
