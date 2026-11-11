@@ -114,6 +114,8 @@ public class servicioDAO {
             JOptionPane.showMessageDialog(null, "Error en la operación: " +error);
         }
         
+        BD.cerrarBD();
+
     }
     
     public void agregarRefaccionesAlServicio (int idServ, int idRef) {
@@ -137,6 +139,7 @@ public class servicioDAO {
             
         }
         
-        
+        BD.cerrarBD();
+
     }
 }
