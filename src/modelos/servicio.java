@@ -16,7 +16,20 @@ public class servicio {
    private Date fechaProxServicio;
    private List<Integer> listaRefacciones;
 
-    // Constructor para leer de la bdd.
+    // Constructor para leer de la bdd. (sin refacciones)
+
+    public servicio(int id, String folio, int idCliente, int idAuto, int idEmpleado, Date fechaIngreso, EstadosServicio estatus, Date fechaProxServicio) {
+        this.id = id;
+        this.folio = folio;
+        this.idCliente = idCliente;
+        this.idAuto = idAuto;
+        this.idEmpleado = idEmpleado;
+        this.fechaIngreso = fechaIngreso;
+        this.estatus = estatus;
+        this.fechaProxServicio = fechaProxServicio;
+    }
+   
+    // Constructor para leer de la bdd. (con refacciones)
 
     public servicio(int id, String folio, int idCliente, int idAuto, int idEmpleado, Date fechaIngreso, EstadosServicio estatus, Date fechaProxServicio, List<Integer> listaRefacciones) {
         this.id = id;
