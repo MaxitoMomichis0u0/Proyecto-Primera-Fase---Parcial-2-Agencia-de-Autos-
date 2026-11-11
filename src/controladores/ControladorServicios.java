@@ -54,4 +54,12 @@ public class ControladorServicios {
          consultaSQL.agregarRefaccionesAlServicio(s.getId(), idRef);
          
      }*/
+     
+     /*
+     public void buscarPorFolio(String folio) {
+         
+         consultaSQL.buscarPorFolio(folio);
+         
+     }
+        */
 }

@@ -58,7 +58,7 @@ public class clienteDAO {
             
             insertar.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Cliente registrado exitosamente.");
+            // JOptionPane.showMessageDialog(null, "Cliente registrado exitosamente.");
             
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error:" +error);

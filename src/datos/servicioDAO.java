@@ -108,7 +108,7 @@ public class servicioDAO {
             actualizar.setInt(2, s.getId());
             actualizar.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Se ha avanzado de estatus corectamente");
+            // JOptionPane.showMessageDialog(null, "Se ha avanzado de estatus corectamente");
             
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error en la operación: " +error);
@@ -130,7 +130,7 @@ public class servicioDAO {
             agregarRef.setInt(2, idRef);
             agregarRef.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Refaccion agregada al informe del servicio");
+            // JOptionPane.showMessageDialog(null, "Refaccion agregada al informe del servicio");
             
             
         } catch (Exception error) {
@@ -142,4 +142,68 @@ public class servicioDAO {
         BD.cerrarBD();
 
     }
+    
+    public void buscarPorFolio(String folio) {
+        
+        Connection cn = BD.conectarBD();
+        
+        try {
+             
+         PreparedStatement seleccionarTodo = cn.prepareStatement("SELECT folio, id_cliente, id_auto, id_empleado, fecha_ingreso, estatus, fecha_siguiente_servicio FROM servicios WHERE folio = ?");
+          
+         seleccionarTodo.setString(1, folio);
+         
+         ResultSet busq = seleccionarTodo.executeQuery();
+         
+         String estatus = busq.getString("estatus");
+         EstadosServicio estado = convertirTextoAEstado(estatus);
+         
+         while (busq.next()) {
+             
+             JOptionPane.showMessageDialog(null, "Servicio encontrado \nFolio: " +busq.getString("folio")+ "\nID del Cliente: " +busq.getInt("id_cliente")+ "\nID del Auto: " +busq.getInt("id_auto")+ "\nID del Empleado: " +busq.getInt("id_empleado")+ "\nFecha de ingreso: " +busq.getDate("fecha_ingreso")+ "\nEstatus: " +estado+ "\nFecha del sgte. servicio: " +busq.getDate("fecha_siguiente_servicio"));
+             
+         }
+            
+        } catch (Exception error) {
+            
+            JOptionPane.showMessageDialog(null, "Error al hacer la operación: " +error);
+            
+        }
+        
+        BD.cerrarBD();
+        
+    }
+    
+    /* Puede funcionar pero tendria que meter mas cosas xd
+    public void buscarPorNombre (String nombre) {
+        
+        Connection cn = BD.conectarBD();
+        
+        try {
+            
+         PreparedStatement seleccionarTodo = cn.prepareStatement("SELECT folio, id_cliente, id_auto, id_empleado, fecha_ingreso, estatus, fecha_siguiente_servicio FROM servicios WHERE nombre = ?");
+          
+         seleccionarTodo.setString(1, nombre);
+         
+         ResultSet busq = seleccionarTodo.executeQuery();
+         
+         String estatus = busq.getString("estatus");
+         EstadosServicio estado = convertirTextoAEstado(estatus);
+         
+         while (busq.next()) {
+             
+             JOptionPane.showMessageDialog(null, "Servicio encontrado \nFolio: " +busq.getString("folio")+ "\nID del Cliente: " +busq.getInt("id_cliente")+ "\nID del Auto: " +busq.getInt("id_auto")+ "\nID del Empleado: " +busq.getInt("id_empleado")+ "\nFecha de ingreso: " +busq.getDate("fecha_ingreso")+ "\nEstatus: " +estado+ "\nFecha del sgte. servicio: " +busq.getDate("fecha_siguiente_servicio"));
+             
+         }
+            
+        } catch (Exception error) {
+            
+            JOptionPane.showMessageDialog(null, "Error al hacer la operación: " +error);
+            
+        }
+        
+        BD.cerrarBD();
+        
+    } */
+    
 }

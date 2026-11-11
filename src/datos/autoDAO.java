@@ -62,7 +62,7 @@ public class autoDAO {
             
             insertar.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Auto registrado exitosamente.");
+            // JOptionPane.showMessageDialog(null, "Auto registrado exitosamente.");
             
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error:" +error);
@@ -89,7 +89,7 @@ public class autoDAO {
             
             actualizar.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Auto actualizado exitosamente.");
+            // JOptionPane.showMessageDialog(null, "Auto actualizado exitosamente.");
             
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error:" +error);
@@ -109,7 +109,7 @@ public class autoDAO {
             eliminar.setInt(1, id);
             eliminar.executeUpdate(); 
                         
-            JOptionPane.showMessageDialog(null, "Eliminación exitosa");
+            // JOptionPane.showMessageDialog(null, "Eliminación exitosa");
             
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error al eliminar: " +error);

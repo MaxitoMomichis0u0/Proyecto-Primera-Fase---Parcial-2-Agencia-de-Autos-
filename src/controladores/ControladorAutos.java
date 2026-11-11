@@ -47,6 +47,8 @@ public class ControladorAutos {
          
      } */
      
+     //bueno todo esto lo tienes que cambiar a tu gusto xd.
+     
      public void modificarAuto(auto autoModificar) {
          
          for (auto a : listaAutos) {
