@@ -5,6 +5,7 @@
 package controladores;
 import java.awt.*;
 import vistas.principal;
+import vistas.refaccionesconsultar;
 import vistas.registrarservicio;
 /**
  *
@@ -15,8 +16,10 @@ public class ControladorPrincipal {
 
     public ControladorPrincipal(principal vista) {
         this.vista = vista;
-        this.vista.getMenuRegServ().addActionListener(e -> mostrarVista(new registrarservicio()));
-    }
+            this.vista.getMenuRegServ().addActionListener(e -> mostrarVista(new registrarservicio()));
+            this.vista.getMenuRefacciones().addActionListener(e ->{refaccionesconsultar panel= new refaccionesconsultar(); new controladorRefacciones(panel); mostrarVista(panel); });
+            
+        }
                 
                 private void mostrarVista(javax.swing.JPanel panel){
                     vista.getContenedor().removeAll();

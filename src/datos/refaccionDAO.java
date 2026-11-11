@@ -44,7 +44,44 @@ public class refaccionDAO {
         
     }
     public void insertarRefaccipn(refaccion r){
-        Connection cn
+        Connection cn = BD.conectarBD();
+        
+        try {
+            PreparedStatement insertar= cn.prepareStatement("insert into refacciones (nombre, precio) values (?,?)");
+            insertar.setString(1, r.getNombre());
+            insertar.setDouble(2, r.getPrecio());
+            insertar.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Ha ocurrido un error "+ e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        BD.cerrarBD();
     }
     
+    public void modificarRefaccion(refaccion r){
+    Connection cn= BD.conectarBD();
+        try {
+            PreparedStatement actualizar= cn.prepareStatement("update refacciones set nombre=?,precio=?, where id=?");
+            actualizar.setString(1, r.getNombre());
+            actualizar.setDouble(2, r.getPrecio());
+            actualizar.setInt(3, r.getId());
+            
+            actualizar.executeUpdate();
+        } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null,"Ha ocurrido un error "+ e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        BD.cerrarBD();
+    }
+    
+    public void eliminarRefaccion(int id){
+        Connection cn= BD.conectarBD();
+        try {
+            PreparedStatement eliminar= cn.prepareStatement("delete from refacciones where id=?");
+            eliminar.setInt(1, id);
+            eliminar.executeUpdate();
+                    
+        } catch (Exception e) {
+        JOptionPane.showMessageDialog(null,"Ha ocurrido un error "+ e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        BD.cerrarBD();
+    }
 }
