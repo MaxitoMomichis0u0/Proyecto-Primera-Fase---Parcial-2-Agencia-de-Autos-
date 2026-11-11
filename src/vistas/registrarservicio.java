@@ -34,7 +34,7 @@ public class registrarservicio extends javax.swing.JPanel {
 
         txtFFolio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFFolio.setToolTipText("");
-        add(txtFFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 280, -1));
+        add(txtFFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 280, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Cliente:");
@@ -46,7 +46,7 @@ public class registrarservicio extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("Folio:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("Auto:");
