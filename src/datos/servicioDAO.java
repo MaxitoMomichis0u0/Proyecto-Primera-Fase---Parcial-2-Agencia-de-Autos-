@@ -6,11 +6,34 @@ import javax.swing.*;
 import java.util.*;
 import patrones.conexion;
 import modelos.servicio;
+import patrones.*;
 
 public class servicioDAO {
 
     conexion BD = conexion.getInstance();
-            
+    
+    private EstadosServicio convertirTextoAEstado(String texto) {
+
+        if (texto == null) {
+            return new EstadoEnEspera();
+        }
+
+        switch (texto.toLowerCase()) {
+
+            case "en espera":
+                return new EstadoEnEspera();
+
+            case "en proceso":
+                return new EstadoEnProceso();
+
+            case "finalizado":
+                return new EstadoFinalizado();
+
+            default:
+                return new EstadoEnEspera();
+        }
+}
+    
     public List<servicio> listarServicios() {
         
         Connection cn = BD.conectarBD();
@@ -34,7 +57,7 @@ public class servicioDAO {
                     busq.getInt("id_empleado"),
                     busq.getDate("fecha_ingreso"),
                     estado,
-                    busq.getDate("fecha_proximo_servicio")
+                    busq.getDate("fecha_siguiente_servicio")
                 );
                 
                 lista.add(s);
@@ -45,8 +68,28 @@ public class servicioDAO {
             JOptionPane.showMessageDialog(null, "Error al listar: " +error);
         }
         
-        return null;
+        return lista;
     }
     
-    
+    public void insertarServicio(servicio s) {
+        
+        Connection cn = BD.conectarBD();
+        
+        try {
+            
+            PreparedStatement insertar = cn.prepareStatement("INSERT INTO servicios (folio, id_cliente, id_auto, id_empleado) VALUES (?,?,?,?)");
+            
+            insertar.setString(1, s.getFolio());
+            insertar.setInt(2, s.getIdCliente());
+            insertar.setInt(3, s.getIdAuto());
+            insertar.setInt(4, s.getIdEmpleado());
+            insertar.executeUpdate();
+            
+            
+            
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, "Error al insertar servicio: " +error);
+        }
+        
+    }
 }
