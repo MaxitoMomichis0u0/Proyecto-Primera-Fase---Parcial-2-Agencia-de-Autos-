@@ -45,7 +45,7 @@ public class clienteDAO {
     }
         
         
-    public void insertarAuto(cliente c) {
+    public void insertarCliente (cliente c) {
         
         Connection cn = BD.conectarBD();
         

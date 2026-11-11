@@ -46,4 +46,30 @@ public class empleadoDAO {
         
     }
     
+    public boolean validarLogin(String correo, String contrasena) {
+        
+        Connection cn = BD.conectarBD();
+        Boolean validado = false;
+        
+        try {
+            PreparedStatement seleccionar = cn.prepareStatement("SELECT correo, contrasena FROM empleados WHERE correo = ? AND contrasena = ?");
+            
+            seleccionar.setString(1, correo);
+            seleccionar.setString(2, contrasena);
+            
+            ResultSet busq = seleccionar.executeQuery();
+            
+            if(busq.next()) {
+               validado = true;
+            } else {
+               validado = false;
+            }
+                    
+        } catch (Exception error) {
+            
+            JOptionPane.showMessageDialog(null, "Error al hacer la operacion: " +error);
+            
+        }
+        return validado; 
+    }
 }

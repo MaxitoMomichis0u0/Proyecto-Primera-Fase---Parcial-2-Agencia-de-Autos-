@@ -3,7 +3,7 @@ package controladores;
 
 import java.util.*;
 import datos.clienteDAO;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import modelos.cliente;
 
 public class ControladorClientes {
