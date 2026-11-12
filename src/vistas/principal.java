@@ -132,9 +132,6 @@ public class principal extends javax.swing.JFrame {
         return menuClientes;
     }
 
-    public JMenuItem getMenuConServ() {
-        return menuConServ;
-    }
 
     public JMenuItem getMenuDashboard() {
         return menuDashboard;

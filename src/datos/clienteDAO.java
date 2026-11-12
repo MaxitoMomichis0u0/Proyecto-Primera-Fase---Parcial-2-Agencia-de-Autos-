@@ -96,4 +96,16 @@ public class clienteDAO {
         }
         BD.cerrarBD();
     }
+    
+    public void iniciarSesion(){
+        Connection cn= BD.conectarBD();
+        
+        try {
+            PreparedStatement eliminar= cn.prepareStatement("");
+        } catch (Exception e) {
+        }
+        
+        
+        
+    }
 }

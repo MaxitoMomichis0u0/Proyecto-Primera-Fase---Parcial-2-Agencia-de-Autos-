@@ -9,7 +9,7 @@ public class conexion {
     private static Connection conexion;
     private static conexion instancia;
     
-    private static final String url = "jdbc:mysql://localhost/agencia_de_autos";
+    private static final String url = "jdbc:mysql://localhost:3306/agencia_de_autos";
     private static final String user = "root";
     private static final String pass = "";
 
