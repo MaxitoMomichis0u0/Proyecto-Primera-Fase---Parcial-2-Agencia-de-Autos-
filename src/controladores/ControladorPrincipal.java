@@ -23,8 +23,12 @@ public ControladorPrincipal(principal vista) {
     this.vista = vista;
 
     this.vista.getMenuRegServ()
-        .addActionListener(e -> mostrarVista(new registrarservicio()));
+    .addActionListener(e -> {
+        registrarservicio panel = new registrarservicio();
+        new ControladorServicios(panel);
+        mostrarVista(panel);
 
+    });
     this.vista.getMenuRefacciones()
         .addActionListener(e -> {
         refaccionesconsultar panel =new refaccionesconsultar();
@@ -40,7 +44,7 @@ public ControladorPrincipal(principal vista) {
             });
     this.vista.getMenuAutos().addActionListener(e ->{
         autos panel= new autos();
-        new ControladorAutos();
+        new ControladorAutos(panel);
         mostrarVista(panel);
     });
     this.vista.getMenuEmpleados().addActionListener(e ->{
@@ -48,11 +52,7 @@ public ControladorPrincipal(principal vista) {
         new ControladorEmpleado(panel);
         mostrarVista(panel);
      });
-    this.vista.getMenuConServ().addActionListener(e ->{
-        consultarservicio panel= new consultarservicio();
-        new ControladorServicios(panel);
-        mostrarVista(panel);
-    });
+
 }
                 
                 private void mostrarVista(javax.swing.JPanel panel){

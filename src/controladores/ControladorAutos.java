@@ -4,19 +4,61 @@ package controladores;
 import java.util.*;
 import datos.autoDAO;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelos.auto;
+import vistas.autos;
 
 public class ControladorAutos {
     
-    private List <auto> listaAutos;
-    private autoDAO consultaSQL;
+    private autos vista;
+    private autoDAO dao;
     
-     public ControladorAutos() {
-        this.consultaSQL = new autoDAO();
-        this.listaAutos =  consultaSQL.listarAutos();
+
+     public ControladorAutos(autos vista) {
+         this.vista= vista;
+         this.dao= new autoDAO();
+         
+         cargarTabla();
+         vista.getBtnGuardar().addActionListener(e -> guardarAuto());
+         vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
     }
+     
+     private void guardarAuto(){
+         auto a= new auto();
+         
+         a.setModelo(vista.getTxtModelo().getText());
+         a.setMarca(vista.getTxtMarca().getText());
+         a.setAno(Integer.parseInt(vista.getTxtAno().getText()));
+         a.setCaracteristicas(vista.getTxtCarac().getText());
+         dao.insertarAuto(a);
+         cargarTabla();
+         limpiarCampos();
+     }
+     
+     private void cargarTabla(){
+         DefaultTableModel  m= (DefaultTableModel) vista.getTablaAutos().getModel();
+         m.setRowCount(0);
+         List<auto> lista= dao.listarAutos();
+         
+         for(auto a: lista){
+             
+             m.addRow(new Object[]{
+                 a.getId(), a.getModelo(), a.getMarca(), a.getAno(), a.getCaracteristicas()
+             });
+         }
+     }
+     
+     private void limpiarCampos(){
+         vista.getTxtId().setText("");
+         vista.getTxtModelo().setText("");
+         vista.getTxtMarca().setText("");
+         vista.getTxtAno().setText("");
+         vista.getTxtCarac().setText("");
+     }
+     
+     
     
-     // Esto es para que tú lo completes cuando hagas la vista, Chuy.
+     // Esto es para que tú lo completes cuando hagas la vista, Chuy. no vua borrar esto xd
      
      /*
      public void insertarAuto() {
@@ -48,7 +90,7 @@ public class ControladorAutos {
      } */
      
      //bueno todo esto lo tienes que cambiar a tu gusto xd.
-     
+     /*
      public void modificarAuto(auto autoModificar) {
          
          for (auto a : listaAutos) {
@@ -85,5 +127,5 @@ public class ControladorAutos {
          consultaSQL.buscarAuto(id);
          
      }
-     
+     */
 }

@@ -51,6 +51,10 @@ public class registrarservicio extends javax.swing.JPanel {
         return txtPersonaEntrega;
     }
 
+    public JDateChooser getJdcFecha() {
+        return jdcFecha;
+    }
+
    
 
     

@@ -38,7 +38,6 @@ public class principal extends javax.swing.JFrame {
         menuSalir = new javax.swing.JMenuItem();
         jmservicios = new javax.swing.JMenu();
         menuRegServ = new javax.swing.JMenuItem();
-        menuConServ = new javax.swing.JMenuItem();
         jmcatalogos = new javax.swing.JMenu();
         menuClientes = new javax.swing.JMenuItem();
         menuAutos = new javax.swing.JMenuItem();
@@ -71,9 +70,6 @@ public class principal extends javax.swing.JFrame {
             }
         });
         jmservicios.add(menuRegServ);
-
-        menuConServ.setText("Consultar Servicio");
-        jmservicios.add(menuConServ);
 
         jMenuBar1.add(jmservicios);
 
@@ -195,7 +191,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAutos;
     private javax.swing.JMenuItem menuCerrar;
     private javax.swing.JMenuItem menuClientes;
-    private javax.swing.JMenuItem menuConServ;
     private javax.swing.JMenuItem menuDashboard;
     private javax.swing.JMenuItem menuEmpleados;
     private javax.swing.JMenuItem menuRefacciones;

@@ -72,4 +72,21 @@ public class empleadoDAO {
         }
         return validado; 
     }
+    
+    public void insertarEmpleado(empleado e){
+        Connection cn= BD.conectarBD();
+        
+        try {
+            PreparedStatement si= cn.prepareStatement("insert into empleados (nombre,correo,contrasena,rol) values (?.?.?.?)");
+            si.setString(1, e.getNombre());
+            si.setString(2, e.getCorreo());
+            si.setString(3, e.getContrasena());
+            si.setString(4, e.getRol());
+            si.executeUpdate();
+            
+        } catch (Exception er) {
+            JOptionPane.showMessageDialog(null, "Error al hacer la operacion: " +er);
+        }
+        BD.cerrarBD();
+    }
 }
