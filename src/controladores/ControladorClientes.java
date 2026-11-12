@@ -24,6 +24,7 @@ public class ControladorClientes {
         
         this.vista.getBtnGuardar().addActionListener(e -> guardarCliente());
         this.vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
+        this.vista.getBtnEliminar().addActionListener(e -> borrar());
     }
          
      
@@ -36,6 +37,17 @@ public class ControladorClientes {
      limpiarCampos();
 
      } 
+     
+      private void borrar(){
+        int fila= vista.getTablaClientes().getSelectedRow();
+        if(fila >=0){
+            DefaultTableModel m= (DefaultTableModel) vista.getTablaClientes().getModel();
+            m.removeRow(fila);
+        }
+      dao.eliminarCliente(fila);
+      limpiarCampos();
+      cargarTabla();
+      }
      
      private void cargarTabla(){
          DefaultTableModel modelo= (DefaultTableModel) vista.getTablaClientes().getModel();

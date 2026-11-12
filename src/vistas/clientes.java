@@ -74,10 +74,10 @@ public class clientes extends javax.swing.JPanel {
         lblfolio1 = new javax.swing.JLabel();
         txtTel = new javax.swing.JTextField();
         lblfolio2 = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
         Scroll = new javax.swing.JScrollPane();
         TablaClientes = new javax.swing.JTable();
         txtId = new javax.swing.JTextField();
@@ -128,6 +128,12 @@ public class clientes extends javax.swing.JPanel {
         lblfolio2.setText("Teléfono:");
         add(lblfolio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
+        btnLimpiar.setBackground(new java.awt.Color(255, 255, 153));
+        btnLimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 120, 30));
+
         btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
         btnEliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,19 +145,13 @@ public class clientes extends javax.swing.JPanel {
         btnGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 120, 30));
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 120, 30));
 
         btnModificar.setBackground(new java.awt.Color(102, 255, 204));
         btnModificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 120, 30));
-
-        btnLimpiar.setBackground(new java.awt.Color(255, 255, 153));
-        btnLimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, 30));
 
         TablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,6 +164,7 @@ public class clientes extends javax.swing.JPanel {
                 "ID", "Nombre", "Teléfono"
             }
         ));
+        TablaClientes.setEnabled(false);
         TablaClientes.setSelectionBackground(new java.awt.Color(255, 153, 153));
         Scroll.setViewportView(TablaClientes);
 

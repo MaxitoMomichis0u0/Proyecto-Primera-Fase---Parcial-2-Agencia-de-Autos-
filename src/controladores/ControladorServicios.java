@@ -1,14 +1,10 @@
 
 package controladores;
 
-import datos.autoDAO;
-import datos.clienteDAO;
-import datos.empleadoDAO;
-import datos.refaccionDAO;
-import datos.servicioDAO;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import vistas.registrarservicio;
+import datos.*;
+import javax.swing.*;
+import javax.swing.table.*;
+import vistas.*;
 import modelos.*;
 public class ControladorServicios {
     private registrarservicio vista;
