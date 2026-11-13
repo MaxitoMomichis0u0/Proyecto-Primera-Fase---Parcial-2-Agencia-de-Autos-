@@ -46,11 +46,6 @@ public class ControladorClientes {
 
      } 
      
-    public void eliminar(){
-        int id= Integer.parseInt(vista.getTxtId().getText());
-        dao.eliminarCliente(id);
-    }
-     
      private void cargarTabla(){
          DefaultTableModel modelo= (DefaultTableModel) vista.getTablaClientes().getModel();
          modelo.setRowCount(0);
@@ -68,4 +63,38 @@ public class ControladorClientes {
          vista.getTxtTel().setText("");
      }
     
+     
+         public void seleccionarFila(){
+         int fila= vista.getTablaClientes().getSelectedRow();
+         if(fila >= 0){
+         vista.getTxtId().setText(vista.getTablaClientes().getValueAt(fila, 0).toString());
+         vista.getTxtNombre().setText(vista.getTablaClientes().getValueAt(fila, 1).toString());
+         vista.getTxtTel().setText(vista.getTablaClientes().getValueAt(fila, 2).toString());
+         }
+     }
+         
+             private void modificar(){
+        try {
+            cliente r= new cliente(Integer.parseInt(vista.getTxtId().getText()), vista.getTxtNombre().getText(),
+                    vista.getTxtTel().getText());
+            dao.modificarCliente(r);
+            JOptionPane.showMessageDialog(null,"Se ha actualizado la refacción "+vista.getTxtNombre().getText()+ " :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+            limpiarCampos();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void eliminar(){
+        try {
+            int id= Integer.parseInt(vista.getTxtId().getText());
+            dao.eliminarCliente(id);
+            JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+            limpiarCampos();
+        } catch (Exception e) {JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
 }

@@ -5,6 +5,7 @@ import java.util.*;
 import datos.empleadoDAO;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import modelos.empleado;
@@ -95,4 +96,17 @@ public class ControladorEmpleado {
         vista.getTxtpass().setText("");
         vista.getCboRol().setSelectedIndex(0);
     }
+    
+    
+         public void seleccionarFila(){
+         int fila= vista.getTablaEmpleados().getSelectedRow();
+         if(fila >= 0){
+         vista.getTxtId().setText(vista.getTablaEmpleados().getValueAt(fila, 0).toString());
+         vista.getTxtNombre().setText(vista.getTablaEmpleados().getValueAt(fila, 1).toString());
+         vista.getTxtCorreo().setText(vista.getTablaEmpleados().getValueAt(fila, 2).toString());
+         vista.getTxtpass().setText(vista.getTablaEmpleados().getValueAt(fila, 3).toString());
+         vista.getCboRol().setSelectedItem(vista.getTablaEmpleados().getValueAt(fila,4).toString());
+
+         }
+     }
 }

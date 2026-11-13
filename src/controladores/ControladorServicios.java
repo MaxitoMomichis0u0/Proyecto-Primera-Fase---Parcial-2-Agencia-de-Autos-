@@ -101,7 +101,6 @@ public class ControladorServicios {
         DefaultTableModel m= (DefaultTableModel) vista.getTablaRef().getModel();
         m.addRow(new Object[] {"", nombre, ""});
     }
-    
 
      
      

@@ -64,7 +64,42 @@ public class ControladorAutos {
          vista.getTxtCarac().setText("");
      }
      
+     public void seleccionarFila(){
+         int fila= vista.getTablaAutos().getSelectedRow();
+         if(fila >= 0){
+         vista.getTxtId().setText(vista.getTablaAutos().getValueAt(fila, 0).toString());
+         vista.getTxtModelo().setText(vista.getTablaAutos().getValueAt(fila, 1).toString());
+         vista.getTxtMarca().setText(vista.getTablaAutos().getValueAt(fila, 2).toString());
+         vista.getTxtAno().setText(vista.getTablaAutos().getValueAt(fila, 3).toString());
+         vista.getTxtCarac().setText(vista.getTablaAutos().getValueAt(fila, 2).toString());
+         }
+     }
      
+     
+         private void modificar(){
+        try {
+            auto r= new auto(Integer.parseInt(vista.getTxtId().getText()), vista.getTxtModelo().getText(), vista.getTxtMarca().getText(), Integer.parseInt(vista.getTxtAno().getText()),
+            vista.getTxtCarac().getText());
+            dao.modificarAuto(r);
+            JOptionPane.showMessageDialog(null,"Se ha actualizado la refacción "+vista.getTxtMarca().getText()+ " :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+            limpiarCampos();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void eliminar(){
+        try {
+            int id= Integer.parseInt(vista.getTxtId().getText());
+            dao.eliminarAuto(id);
+            JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción "+vista.getTxtModelo().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+            limpiarCampos();
+        } catch (Exception e) {JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
     
      // Esto es para que tú lo completes cuando hagas la vista, Chuy. no vua borrar esto xd
      
