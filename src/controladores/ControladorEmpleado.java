@@ -3,6 +3,8 @@ package controladores;
 
 import java.util.*;
 import datos.empleadoDAO;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import modelos.empleado;
@@ -47,6 +49,12 @@ public class ControladorEmpleado {
         
         vista.getBtnGuardar().addActionListener(e -> guardarEmpleado());
         vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
+        this.vista.getTablaEmpleados().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                seleccionarFila();
+            }
+        });
     }
     
     private void cargarRoles(){

@@ -15,6 +15,7 @@ public class ControladorLogin {
     public ControladorLogin(login vista) {
         this.vista = vista;
         this.vista.getBtnLogin().addActionListener(e -> iniciarSesion());
+        
                 
     }
     

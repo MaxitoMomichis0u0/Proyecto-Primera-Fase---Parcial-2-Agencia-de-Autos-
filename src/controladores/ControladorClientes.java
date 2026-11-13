@@ -6,6 +6,8 @@ import datos.clienteDAO;
 import javax.swing.*;
 import modelos.cliente;
 import datos.clienteDAO;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
 import modelos.cliente;
 import vistas.clientes;
@@ -24,7 +26,13 @@ public class ControladorClientes {
         
         this.vista.getBtnGuardar().addActionListener(e -> guardarCliente());
         this.vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
-        this.vista.getBtnEliminar().addActionListener(e -> borrar());
+        this.vista.getBtnEliminar().addActionListener(e -> eliminar());
+        this.vista.getTablaClientes().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                seleccionarFila();
+            }
+        });
     }
          
      
@@ -38,16 +46,10 @@ public class ControladorClientes {
 
      } 
      
-      private void borrar(){
-        int fila= vista.getTablaClientes().getSelectedRow();
-        if(fila >=0){
-            DefaultTableModel m= (DefaultTableModel) vista.getTablaClientes().getModel();
-            m.removeRow(fila);
-        }
-      dao.eliminarCliente(fila);
-      limpiarCampos();
-      cargarTabla();
-      }
+    public void eliminar(){
+        int id= Integer.parseInt(vista.getTxtId().getText());
+        dao.eliminarCliente(id);
+    }
      
      private void cargarTabla(){
          DefaultTableModel modelo= (DefaultTableModel) vista.getTablaClientes().getModel();

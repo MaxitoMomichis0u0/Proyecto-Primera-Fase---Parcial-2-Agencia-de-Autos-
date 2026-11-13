@@ -3,6 +3,8 @@ package controladores;
 
 import java.util.*;
 import datos.autoDAO;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.auto;
@@ -21,6 +23,12 @@ public class ControladorAutos {
          cargarTabla();
          vista.getBtnGuardar().addActionListener(e -> guardarAuto());
          vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
+         this.vista.getTablaAutos().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                seleccionarFila();
+            }
+        });
     }
      
      private void guardarAuto(){

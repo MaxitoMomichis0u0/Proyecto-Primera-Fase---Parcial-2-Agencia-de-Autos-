@@ -2,10 +2,14 @@
 package controladores;
 
 import datos.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.table.*;
 import vistas.*;
 import modelos.*;
+import java.text.*;
+import java.util.*;
 public class ControladorServicios {
     private registrarservicio vista;
     private servicioDAO servicioDao;
@@ -23,16 +27,46 @@ public class ControladorServicios {
          empleadoDao= new empleadoDAO();
          refaccionDao= new refaccionDAO();
          
-         
-         
-         
-         this.vista.getBtnAggRef().addActionListener(e -> agrtegarRefaccion());
-         this.vista.getBtnEliminarRef().addActionListener(e -> eliminarREfaccion());
-         this.vista.getBtnRegServ().addActionListener(e -> registrarServicio());
+         cargarAutos();
+         cargarClientes();
+         cargarEmpleados();
+         cargarRefacciones();
+         this.vista.getBtnAggRef().addActionListener(e -> agregarRefaccion());
+        /* this.vista.getBtnEliminarRef().addActionListener(e -> eliminarREfaccion());
+         this.vista.getBtnRegServ().addActionListener(e -> registrarServicio());*/
+        this.vista.getTablaRef().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                seleccionarFila();
+            }
+        });
          
      
      }
-  
+     
+     public void seleccionarFila(){
+         
+         
+         int fila= vista.getTablaRef().getSelectedRow();
+         if(fila >= 0){
+         vista.getTxtId().setText(vista.getTablaRef().getValueAt(fila, 0).toString());
+         vista.getTxtFolio().setText(vista.getTablaRef().getValueAt(fila, 1).toString());
+         vista.getCboCliente().setSelectedItem(vista.getTablaRef().getValueAt(fila, 2).toString());
+         vista.getCboAuto().setSelectedItem(vista.getTablaRef().getValueAt(fila, 3).toString());
+         vista.getCboEmpleado().setSelectedItem(vista.getTablaRef().getValueAt(fila, 4).toString());
+         vista.getTxtPersonaEntrega().setText(vista.getTablaRef().getValueAt(fila, 5).toString());
+             try {
+                 SimpleDateFormat formato= new SimpleDateFormat("yyy-MM-dd");
+                 Date fecha= formato.parse(vista.getTablaRef().getValueAt(fila, 6).toString());
+                 vista.getJdcFecha().setDate(fecha);
+             } catch (Exception e) {
+                 JOptionPane.showMessageDialog(null, "No se pudo la fecha bro", "Error", JOptionPane.ERROR_MESSAGE);
+             }
+         
+         vista.getCboRefaccion().setSelectedItem(vista.getTablaRef().getValueAt(fila, 7).toString());
+         
+         }
+     }
      
      private void cargarClientes(){
          vista.getCboCliente().removeAllItems();
@@ -61,23 +95,14 @@ public class ControladorServicios {
         }
     }
     
-    private void agrtegarRefaccion(){
+    private void agregarRefaccion(){
         String nombre= vista.getCboRefaccion().getSelectedItem().toString();
         
         DefaultTableModel m= (DefaultTableModel) vista.getTablaRef().getModel();
         m.addRow(new Object[] {"", nombre, ""});
     }
     
-    private void eliminarREfaccion(){
-        int fila= vista.getTablaRef().getSelectedRow();
-        if(fila >=0){
-            DefaultTableModel m= (DefaultTableModel) vista.getTablaRef().getModel();
-            m.removeRow(fila);
-        }
-    }
-            private void registrarServicio(){
-            JOptionPane.showMessageDialog(null, "El servicio ha sido registrado.", "Servivio Registrado", JOptionPane.INFORMATION_MESSAGE);
-        } 
+
      
      
      

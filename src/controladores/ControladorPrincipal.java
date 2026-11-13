@@ -52,6 +52,7 @@ public ControladorPrincipal(principal vista) {
         new ControladorEmpleado(panel);
         mostrarVista(panel);
      });
+    
 
 }
                 

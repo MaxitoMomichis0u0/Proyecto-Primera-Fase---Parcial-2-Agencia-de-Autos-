@@ -4,9 +4,10 @@
  */
 package controladores;
 import datos.refaccionDAO;
+import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 import modelos.refaccion;
 import vistas.refaccionesconsultar;
 /**
@@ -25,6 +26,12 @@ public class controladorRefacciones {
         vista.getBtnEliminar().addActionListener(e -> eliminar());
         vista.getTablaRef().getSelectionModel().addListSelectionListener(e -> seleccionarFila());
         vista.getBtnLimpiar().addActionListener(e -> limpiar());
+        this.vista.getTablaRef().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                seleccionarFila();
+            }
+        });
         cargarTabla();
     }
     
@@ -35,12 +42,12 @@ public class controladorRefacciones {
             
             refaccion r= new refaccion(0, nombre, precio);
             dao.insertarRefaccipn(r);
-            JOptionPane.showMessageDialog(null,"Se ha registrado la refacción :D", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha registrado la refacción "+vista.getTxtNombre().getText()+ " :D", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
-
+            limpiar();
                     
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Ha ocurrido un error, favor de ingresar los datos correctamente \nError: "+ e, "Error", JOptionPane.ERROR_MESSAGE);
 
         }
     }
@@ -69,6 +76,7 @@ public class controladorRefacciones {
             vista.getTxtId().setText(vista.getTablaRef().getValueAt(fila, 0).toString());
             vista.getTxtNombre().setText(vista.getTablaRef().getValueAt(fila, 1).toString());
             vista.getTxtPrecio().setText(vista.getTablaRef().getValueAt(fila, 2).toString());
+
         }
     }
     
@@ -77,9 +85,9 @@ public class controladorRefacciones {
             refaccion r= new refaccion(Integer.parseInt(vista.getTxtId().getText()), vista.getTxtNombre().getText(),
                     Double.parseDouble(vista.getTxtPrecio().getText()));
             dao.modificarRefaccion(r);
-            JOptionPane.showMessageDialog(null,"Se ha actualizado la refacción :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha actualizado la refacción "+vista.getTxtNombre().getText()+ " :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
-                    
+            limpiar();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -89,8 +97,9 @@ public class controladorRefacciones {
         try {
             int id= Integer.parseInt(vista.getTxtId().getText());
             dao.eliminarRefaccion(id);
-            JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
+            limpiar();
         } catch (Exception e) {JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
             
         }
@@ -101,4 +110,6 @@ public class controladorRefacciones {
         vista.getTxtNombre().setText("");
         vista.getTxtPrecio().setText("");
     }
+    
+    
 }
