@@ -15,10 +15,6 @@ public class registrarservicio extends javax.swing.JPanel {
         return btnAggRef;
     }
 
-    public JButton getBtnEliminarRef() {
-        return btnEliminarRef;
-    }
-
     public JButton getBtnRegServ() {
         return btnRegServ;
     }
@@ -94,7 +90,6 @@ public class registrarservicio extends javax.swing.JPanel {
         lblfolio = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cboRefaccion = new javax.swing.JComboBox<>();
-        btnEliminarRef = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaRef = new javax.swing.JTable();
         btnRegServ = new javax.swing.JButton();
@@ -188,12 +183,6 @@ public class registrarservicio extends javax.swing.JPanel {
         cboRefaccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(cboRefaccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 280, -1));
 
-        btnEliminarRef.setBackground(new java.awt.Color(255, 51, 51));
-        btnEliminarRef.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnEliminarRef.setText("Eliminar Refacción");
-        btnEliminarRef.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        add(btnEliminarRef, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 170, 50));
-
         tablaRef.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -235,7 +224,6 @@ public class registrarservicio extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAggRef;
-    private javax.swing.JButton btnEliminarRef;
     private javax.swing.JButton btnRegServ;
     private javax.swing.JComboBox<String> cboAuto;
     private javax.swing.JComboBox<String> cboCliente;
