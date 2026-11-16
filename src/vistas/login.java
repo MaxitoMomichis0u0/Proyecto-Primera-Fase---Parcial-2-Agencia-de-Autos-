@@ -1,6 +1,7 @@
 package vistas;
 
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -25,7 +26,7 @@ public class login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtpass = new javax.swing.JPasswordField();
-        btnLogin1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesion");
@@ -96,14 +97,14 @@ public class login extends javax.swing.JFrame {
         txtpass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 270, -1));
 
-        btnLogin1.setBackground(new java.awt.Color(255, 204, 51));
-        btnLogin1.setText("Iniciar Sesion");
-        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setBackground(new java.awt.Color(255, 204, 51));
+        btnLogin.setText("Iniciar Sesion");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogin1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 110, 40));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 110, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,32 +113,32 @@ public class login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnRegActionPerformed
 
-    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogin1ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[]) {
     }
 
     public JButton getBtnLogin() {
-        return btnReg;
+        return btnLogin;
     }
 
-    public JTextField getTxtpass() {
-        return txtpass;
+    public JButton getBtnReg() {
+        return btnReg;
     }
 
     public JTextField getTxtUsuario() {
         return txtUsuario;
     }
 
-    public JButton getBtnReg() {
-        return btnReg;
+    public JPasswordField getTxtpass() {
+        return txtpass;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin1;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnReg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

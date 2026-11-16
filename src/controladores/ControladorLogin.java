@@ -17,22 +17,24 @@ import vistas.principal;
 public class ControladorLogin {
     private login vista;
 
-    public ControladorLogin(login vista) {
+public ControladorLogin(login vista) {
         this.vista = vista;
         this.vista.getBtnLogin().addActionListener(e -> iniciarSesion());
         this.vista.getBtnReg().addActionListener(e -> {
-                Registrar reg= new Registrar(vista, true);
-                new ControladorRegistrar(reg);
-                reg.setLocationRelativeTo(vista);
-                reg.setVisible(true);      
-    });
+                    Registrar reg =new Registrar(vista, true);
+                    new ControladorRegistrar(reg);
+                    reg.setLocationRelativeTo(vista);
+                    reg.setVisible(true); });
     }
     
     private void iniciarSesion(){
-       if(vista.getTxtUsuario().getText().isEmpty()
-       && vista.getTxtpass().getText().isEmpty()){
-        return;
-    }
+        if(vista.getTxtUsuario().getText().trim().isEmpty()
+        || vista.getTxtpass().getText().trim().isEmpty()){
+
+        JOptionPane.showMessageDialog(null,"Completa todos los campos." );
+
+    return;
+}
         String correo= vista.getTxtUsuario().getText();
         String pass= vista.getTxtpass().getText();
         empleadoDAO dao= new empleadoDAO();

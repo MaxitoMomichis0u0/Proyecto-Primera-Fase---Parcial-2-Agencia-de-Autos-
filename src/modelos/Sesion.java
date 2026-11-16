@@ -46,6 +46,11 @@ public class Sesion {
         Sesion.rol = rol;
     }
     
-    
+    public static void cerrarSesion(){
+        id= 0;
+        usuario= null;
+        correo= null;
+        rol= null;
+    }
     
 }

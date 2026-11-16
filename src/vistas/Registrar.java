@@ -132,7 +132,7 @@ public class Registrar extends javax.swing.JDialog {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 120, 30));
 
         btnRegistrar.setBackground(new java.awt.Color(255, 204, 51));
-        btnRegistrar.setText("Iniciar Sesion");
+        btnRegistrar.setText("Registrarse");
         btnRegistrar.addActionListener(this::btnRegistrarActionPerformed);
         jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 110, 40));
 

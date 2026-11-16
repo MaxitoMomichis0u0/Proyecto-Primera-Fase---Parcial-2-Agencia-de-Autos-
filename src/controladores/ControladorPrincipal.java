@@ -4,11 +4,14 @@
  */
 package controladores;
 import java.awt.*;
+import javax.swing.JOptionPane;
+import modelos.Sesion;
 import vistas.Inicio;
 import vistas.autos;
 import vistas.clientes;
 import vistas.consultarservicio;
 import vistas.empleados;
+import vistas.login;
 import vistas.principal;
 import vistas.refaccionesconsultar;
 import vistas.registrarservicio;
@@ -64,6 +67,8 @@ public ControladorPrincipal(principal vista) {
         mostrarVista(panel);
     });
 
+    this.vista.getMenuCerrar().addActionListener(e -> cerrarSesion());
+    this.vista.getMenuSalir().addActionListener(e -> salir());
 }
                 
                 private void mostrarVista(javax.swing.JPanel panel){
@@ -71,6 +76,22 @@ public ControladorPrincipal(principal vista) {
                     vista.getContenedor().add(panel, BorderLayout.CENTER);
                     vista.getContenedor().revalidate();
                     vista.getContenedor().repaint();
+                }
+                
+                private void cerrarSesion(){
+                    login log = new login();
+                    new ControladorLogin(log);
+                    log.setLocationRelativeTo(log);
+                    log.setVisible(true);
+                    vista.dispose();
+                }
+                
+                private void salir(){
+                    int op= JOptionPane.showConfirmDialog(null, "¿De veras te quieres ir?", "Saliendo...", JOptionPane.YES_NO_OPTION);
+                    if(op==JOptionPane.YES_OPTION){
+                        Sesion.cerrarSesion();
+                        System.exit(0);
+                    }
                 }
                         
     
