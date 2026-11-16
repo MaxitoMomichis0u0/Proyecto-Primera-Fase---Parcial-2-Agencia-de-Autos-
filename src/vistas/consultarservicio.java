@@ -114,13 +114,13 @@ public class consultarservicio extends javax.swing.JPanel {
 
         tablaServ.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Folio", "Cliente", "Auto", "Empleado", "Fecha", "Estado"
+                "ID", "Folio", "Cliente", "Auto", "Empleado", "Fecha", "Estado"
             }
         ));
         tablaServ.setSelectionBackground(new java.awt.Color(255, 153, 153));

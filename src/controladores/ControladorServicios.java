@@ -20,7 +20,8 @@ public class ControladorServicios {
     private List<cliente> listaClientes;
     private List<auto> listaAutos;
     private List<empleado> listaEmpleados;
-
+    private List<refaccion> listaRefacciones;
+    private List<Integer> refaccionesSeleccionadas= new ArrayList<>();
      public ControladorServicios(registrarservicio vista) {
          this.vista= vista;
          servicioDao= new servicioDAO();
@@ -93,14 +94,17 @@ public class ControladorServicios {
     }
      
     private void cargarRefacciones(){
+        listaRefacciones= refaccionDao.listarRefaccion();
         vista.getCboRefaccion().removeAllItems();
-        for( refaccion a: refaccionDao.listarRefaccion()){
+        for( refaccion a: listaRefacciones){
             vista.getCboRefaccion().addItem(a.getNombre());
         }
     }
     
     private void agregarRefaccion(){
-        String nombre= vista.getCboRefaccion().getSelectedItem().toString();
+        int indice= vista.getCboRefaccion().getSelectedIndex();
+        refaccion r= listaRefacciones.get(indice);
+        refaccionesSeleccionadas.add(r.getId());
         
         DefaultTableModel m= (DefaultTableModel) vista.getTablaRef().getModel();
         m.addRow(new Object[]{"",
@@ -110,7 +114,7 @@ public class ControladorServicios {
         vista.getCboEmpleado().getSelectedItem(),
         vista.getTxtPersonaEntrega().getText(),
         vista.getJdcFecha().getDate(),
-        nombre});
+        r.getNombre()});
     }
 
      
@@ -128,8 +132,12 @@ public class ControladorServicios {
         int idEmpleado= empeladoSel.getId();
         servicio s = new servicio( folio, idCliente, idAuto,  idEmpleado,  personaEntrega,     new Date(), fechaProxima );
         servicioDao.insertarServicio(s);
-        JOptionPane.showMessageDialog( null, "Servicio registrado correctamente" );
-
+        int idServicio= servicioDao.obtenerUltimoServ();
+        for(Integer idRef: refaccionesSeleccionadas){
+        servicioDao.agregarRefaccionesAlServicio(idServicio, idRef);
+    }
+        JOptionPane.showMessageDialog( null, "Servicio "+folio+" registrado correctamente" );
+        cargarTabla();
     }catch(Exception e){
         JOptionPane.showMessageDialog( null,"Error: " + e.getMessage() );
 
@@ -144,14 +152,44 @@ public class ControladorServicios {
          List <servicio> lista= servicioDao.listarServicios();
          for(servicio s:lista){
              modelo.addRow(new Object[]{
-                 s.getId(), s.getFolio(), s.getIdCliente(), s.getIdAuto(),
-                 s.getIdEmpleado(), s.getPersonaEntrega(), s.getFechaProxServicio(),
-                 s.getNombreEstado()
+                 s.getId(), s.getFolio(), buscarNombreCliente(s.getIdCliente()),buscarNombreAuto(s.getIdAuto()),
+                 buscarNombreEmpleado(s.getIdEmpleado()), s.getPersonaEntrega(), s.getFechaProxServicio(),
+                 buscarRefaccion(s.getId())
              });
          }
      }
      
      
+     private String buscarNombreCliente(int id){
+         for(cliente c: listaClientes){
+             if(c.getId()==id){
+                 return c.getNombre();
+             }
+         }
+         return "";
+     }
+     
+     private String buscarNombreAuto(int id){
+         for(auto a: listaAutos){
+             if(a.getId()==id){
+                 return a.getModelo();
+             }
+         }
+         return "";
+     }
+     
+     private String buscarNombreEmpleado(int id){
+         for(empleado e: listaEmpleados){
+             if(e.getId()==id){
+                 return e.getNombre();
+             }
+         }
+         return "";
+     }
+     
+     private String buscarRefaccion(int idS){
+         return servicioDao.obtenerRefaccionServicio(idS);
+     }
      /*
      public void insertarServicio() {
          servicio s = new servicio();

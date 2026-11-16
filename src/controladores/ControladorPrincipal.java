@@ -57,6 +57,12 @@ public ControladorPrincipal(principal vista) {
     Inicio inicio= new Inicio();
     new ControladorInicio(inicio);
     mostrarVista(inicio);
+    
+    this.vista.getConServ().addActionListener(e ->{
+        consultarservicio panel= new consultarservicio();
+        new ControladorConsultarServicios(panel);
+        mostrarVista(panel);
+    });
 
 }
                 

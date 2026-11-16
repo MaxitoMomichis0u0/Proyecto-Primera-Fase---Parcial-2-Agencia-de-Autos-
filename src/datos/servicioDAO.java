@@ -154,11 +154,11 @@ public void insertarServicio(servicio s) {
          
          ResultSet busq = seleccionarTodo.executeQuery();
          
-         String estatus = busq.getString("estatus");
-         EstadosServicio estado = convertirTextoAEstado(estatus);
+        
          
          while (busq.next()) {
-             
+         String estatus = busq.getString("estatus");
+         EstadosServicio estado = convertirTextoAEstado(estatus);
              JOptionPane.showMessageDialog(null, "Servicio encontrado \nFolio: " +busq.getString("folio")+ "\nID del Cliente: " +busq.getInt("id_cliente")+ "\nID del Auto: " +busq.getInt("id_auto")+ "\nID del Empleado: " +busq.getInt("id_empleado")+ "\nFecha de ingreso: " +busq.getDate("fecha_ingreso")+ "\nEstatus: " +estado+ "\nFecha del sgte. servicio: " +busq.getDate("fecha_siguiente_servicio"));
              
          }
@@ -173,6 +173,62 @@ public void insertarServicio(servicio s) {
         
     }
     
+    
+    public String obtenerRefaccionServicio(int idS){
+        Connection cn= BD.conectarBD();
+        try {
+            PreparedStatement consulta= cn.prepareStatement("select r.nombre from refacciones r inner join refaccion_por_servicio rs on r.id= rs.id_refaccion where rs.id_servicio= ?");
+            consulta.setInt(1, idS);
+            ResultSet rs= consulta.executeQuery();
+            if(rs.next()){
+                return rs.getString("nombre");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error asjkdjlasd"+ e.getMessage());
+        } return "";
+    }
+    
+    public int obtenerUltimoServ(){
+        Connection cn= BD.conectarBD();
+        try {
+            PreparedStatement consulta= cn.prepareStatement("select max(id) id from servicios");
+            ResultSet rs= consulta.executeQuery();
+            if(rs.next()){
+                return rs.getInt("id");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error asjhkdae" +e.getMessage());
+        
+    }
+        return 0;
+    }
+    
+    
+    public servicio obtenerServicio(int id){
+        Connection cn= BD.conectarBD();
+        try {
+            PreparedStatement buscar= cn.prepareStatement("select * from servicios where id=?");
+            buscar.setInt(1, id);
+            ResultSet rs= buscar.executeQuery();
+            if(rs.next()){
+                String estatus= rs.getString("estatus");
+                EstadosServicio estado= convertirTextoAEstado(estatus);
+                return new servicio(
+                rs.getInt("id"),
+                rs.getString("folio"),
+                rs.getInt("id_cliente"),
+                rs.getInt("id_auto"),
+                rs.getInt("id_empleado"),
+                rs.getDate("fecha_ingreso"),
+                estado,
+                rs.getDate("fecha_siguiente_servicio"),
+                rs.getString("persona_entrega"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"xd"+ e.getMessage());
+        }
+        return null;
+    }
     /* Puede funcionar pero tendria que meter mas cosas xd
     public void buscarPorNombre (String nombre) {
         

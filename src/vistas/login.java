@@ -18,12 +18,14 @@ public class login extends javax.swing.JFrame {
     private void initComponents() {
 
         txtUsuario = new javax.swing.JTextField();
-        btnLogin = new javax.swing.JButton();
+        btnReg = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        lblfolio1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtpass = new javax.swing.JPasswordField();
+        btnLogin1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesion");
@@ -33,26 +35,37 @@ public class login extends javax.swing.JFrame {
         txtUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 270, -1));
 
-        btnLogin.setBackground(new java.awt.Color(255, 204, 51));
-        btnLogin.setText("Iniciar Sesion");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+        btnReg.setBackground(new java.awt.Color(153, 255, 153));
+        btnReg.setText("Registrarse");
+        btnReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                btnRegActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 110, 40));
+        getContentPane().add(btnReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 110, 40));
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 0));
+
+        lblfolio1.setBackground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblfolio1.setForeground(new java.awt.Color(255, 255, 255));
+        lblfolio1.setText("Inicio de sesión");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(lblfolio1)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblfolio1)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 40));
@@ -83,18 +96,31 @@ public class login extends javax.swing.JFrame {
         txtpass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 270, -1));
 
+        btnLogin1.setBackground(new java.awt.Color(255, 204, 51));
+        btnLogin1.setText("Iniciar Sesion");
+        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 110, 40));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
 
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }//GEN-LAST:event_btnRegActionPerformed
+
+    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogin1ActionPerformed
 
     public static void main(String args[]) {
     }
 
     public JButton getBtnLogin() {
-        return btnLogin;
+        return btnReg;
     }
 
     public JTextField getTxtpass() {
@@ -104,14 +130,20 @@ public class login extends javax.swing.JFrame {
     public JTextField getTxtUsuario() {
         return txtUsuario;
     }
+
+    public JButton getBtnReg() {
+        return btnReg;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin1;
+    private javax.swing.JButton btnReg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblfolio1;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables

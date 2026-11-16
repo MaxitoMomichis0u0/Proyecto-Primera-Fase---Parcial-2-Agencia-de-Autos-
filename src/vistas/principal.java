@@ -38,6 +38,7 @@ public class principal extends javax.swing.JFrame {
         menuSalir = new javax.swing.JMenuItem();
         jmservicios = new javax.swing.JMenu();
         menuRegServ = new javax.swing.JMenuItem();
+        conServ = new javax.swing.JMenuItem();
         jmcatalogos = new javax.swing.JMenu();
         menuClientes = new javax.swing.JMenuItem();
         menuAutos = new javax.swing.JMenuItem();
@@ -70,6 +71,14 @@ public class principal extends javax.swing.JFrame {
             }
         });
         jmservicios.add(menuRegServ);
+
+        conServ.setText("Consultar Servicio");
+        conServ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conServActionPerformed(evt);
+            }
+        });
+        jmservicios.add(conServ);
 
         jMenuBar1.add(jmservicios);
 
@@ -116,6 +125,10 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuRegServActionPerformed
 
+    private void conServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conServActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_conServActionPerformed
+
     public JPanel getContenedor() {
         return contenedor;
     }
@@ -153,6 +166,10 @@ public class principal extends javax.swing.JFrame {
         return menuSalir;
     }
 
+    public JMenuItem getConServ() {
+        return conServ;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -179,6 +196,7 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem conServ;
     private javax.swing.JPanel contenedor;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
