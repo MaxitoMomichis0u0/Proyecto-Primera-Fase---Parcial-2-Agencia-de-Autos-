@@ -16,7 +16,7 @@ public class servicio {
    private EstadosServicio estatus;
    private Date fechaProxServicio;
    private List<Integer> listaRefacciones;
-   
+   private String personaEntrega;
    public servicio() {
        
    }
@@ -50,16 +50,33 @@ public class servicio {
    
     // Constructor para insertar en la bdd.
    
-    public servicio(String folio, int idCliente, int idAuto, int idEmpleado, Date fechaIngreso, EstadosServicio estatus, Date fechaProxServicio, List<Integer> listaRefacciones) {
-        this.folio = folio;
-        this.idCliente = idCliente;
-        this.idAuto = idAuto;
-        this.idEmpleado = idEmpleado;
-        this.fechaIngreso = fechaIngreso;
-        this.estatus = new EstadoEnEspera();
-        this.fechaProxServicio = fechaProxServicio;
-        this.listaRefacciones = new ArrayList<>();
-    }
+public servicio(String folio,int idCliente, int idAuto, int idEmpleado,String personaEntrega, Date fechaIngreso, Date fechaProxServicio) {
+    this.folio = folio;
+    this.idCliente = idCliente;
+    this.idAuto = idAuto;
+    this.idEmpleado = idEmpleado;
+    this.personaEntrega = personaEntrega;
+    this.fechaIngreso = fechaIngreso;
+    this.estatus = new EstadoEnEspera();
+    this.fechaProxServicio = fechaProxServicio;
+    this.listaRefacciones = new ArrayList<>();
+}
+//con persona entrega akjsdjkhasd
+public servicio(
+        int id, String folio,int idCliente, int idAuto,int idEmpleado, Date fechaIngreso,
+        EstadosServicio estatus,Date fechaProxServicio, String personaEntrega
+) {
+
+    this.id = id;
+    this.folio = folio;
+    this.idCliente = idCliente;
+    this.idAuto = idAuto;
+    this.idEmpleado = idEmpleado;
+    this.fechaIngreso = fechaIngreso;
+    this.estatus = estatus;
+    this.fechaProxServicio = fechaProxServicio;
+    this.personaEntrega = personaEntrega;
+}
    
     public int getId() {
         return id;
@@ -153,6 +170,14 @@ public class servicio {
 
     public String getNombreEstado() {
         return this.estatus != null ? this.estatus.getNombreEstado() : "En espera";
+    }
+
+    public String getPersonaEntrega() {
+        return personaEntrega;
+    }
+
+    public void setPersonaEntrega(String personaEntrega) {
+        this.personaEntrega = personaEntrega;
     }
     
 }

@@ -23,6 +23,8 @@ public class ControladorAutos {
          cargarTabla();
          vista.getBtnGuardar().addActionListener(e -> guardarAuto());
          vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
+         vista.getBtnModificar().addActionListener(e -> modificar());
+         vista.getBtnEliminar().addActionListener(e -> eliminar());
          this.vista.getTablaAutos().addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -71,7 +73,7 @@ public class ControladorAutos {
          vista.getTxtModelo().setText(vista.getTablaAutos().getValueAt(fila, 1).toString());
          vista.getTxtMarca().setText(vista.getTablaAutos().getValueAt(fila, 2).toString());
          vista.getTxtAno().setText(vista.getTablaAutos().getValueAt(fila, 3).toString());
-         vista.getTxtCarac().setText(vista.getTablaAutos().getValueAt(fila, 2).toString());
+         vista.getTxtCarac().setText(vista.getTablaAutos().getValueAt(fila, 4).toString());
          }
      }
      
@@ -81,7 +83,7 @@ public class ControladorAutos {
             auto r= new auto(Integer.parseInt(vista.getTxtId().getText()), vista.getTxtModelo().getText(), vista.getTxtMarca().getText(), Integer.parseInt(vista.getTxtAno().getText()),
             vista.getTxtCarac().getText());
             dao.modificarAuto(r);
-            JOptionPane.showMessageDialog(null,"Se ha actualizado la refacción "+vista.getTxtMarca().getText()+ " :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha actualizado el auto "+vista.getTxtMarca().getText()+ " :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiarCampos();
         } catch (Exception e) {
@@ -93,7 +95,7 @@ public class ControladorAutos {
         try {
             int id= Integer.parseInt(vista.getTxtId().getText());
             dao.eliminarAuto(id);
-            JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción "+vista.getTxtModelo().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha eliminado el auto "+vista.getTxtModelo().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiarCampos();
         } catch (Exception e) {JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);

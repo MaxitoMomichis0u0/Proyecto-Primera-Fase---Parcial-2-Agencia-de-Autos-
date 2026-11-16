@@ -39,7 +39,7 @@ public class servicioDAO {
         List<servicio> lista = new ArrayList<>();
         
         try {
-            PreparedStatement seleccionarTodo = cn.prepareStatement("SELECT id, folio, id_cliente, id_auto, id_empleado, fecha_ingreso, estatus, fecha_siguiente_servicio FROM servicios");
+            PreparedStatement seleccionarTodo = cn.prepareStatement("SELECT id, folio, id_cliente, id_auto, id_empleado, fecha_ingreso, estatus, fecha_siguiente_servicio, persona_entrega FROM servicios");
             
             ResultSet busq = seleccionarTodo.executeQuery();
             
@@ -56,7 +56,8 @@ public class servicioDAO {
                     busq.getInt("id_empleado"),
                     busq.getDate("fecha_ingreso"),
                     estado,
-                    busq.getDate("fecha_siguiente_servicio")
+                    busq.getDate("fecha_siguiente_servicio"),
+                    busq.getString("persona_entrega")
                 );
                 
                 lista.add(s);
@@ -72,29 +73,27 @@ public class servicioDAO {
         
     }
     
-    public void insertarServicio(servicio s) {
-        
-        Connection cn = BD.conectarBD();
-        
-        try {
-            
-            PreparedStatement insertar = cn.prepareStatement("INSERT INTO servicios (folio, id_cliente, id_auto, id_empleado) VALUES (?,?,?,?)");
-            
-            insertar.setString(1, s.getFolio());
-            insertar.setInt(2, s.getIdCliente());
-            insertar.setInt(3, s.getIdAuto());
-            insertar.setInt(4, s.getIdEmpleado());
-            insertar.executeUpdate();
-            
-            
-            
-        } catch (Exception error) {
-            JOptionPane.showMessageDialog(null, "Error al insertar servicio: " +error);
-        }
-        
-        BD.cerrarBD();
-        
+public void insertarServicio(servicio s) {
+
+    Connection cn = BD.conectarBD();
+
+    try {
+
+        PreparedStatement insertar = cn.prepareStatement("INSERT INTO servicios " +"(folio,id_cliente,id_auto,id_empleado," +"fecha_siguiente_servicio,persona_entrega) " +
+                "VALUES (?,?,?,?,?,?)");insertar.setString(1,s.getFolio());
+        insertar.setInt(2, s.getIdCliente());
+        insertar.setInt(3, s.getIdAuto());
+        insertar.setInt(4,s.getIdEmpleado() );
+        insertar.setDate(5,new java.sql.Date(s.getFechaProxServicio().getTime()));
+        insertar.setString( 6,  s.getPersonaEntrega() );
+
+        insertar.executeUpdate();
+    } catch (Exception error) {
+        JOptionPane.showMessageDialog( null, "Error al insertar servicio: "+ error);
     }
+
+    BD.cerrarBD();
+}
     
     public void actualizarEstatus(servicio s) {
         

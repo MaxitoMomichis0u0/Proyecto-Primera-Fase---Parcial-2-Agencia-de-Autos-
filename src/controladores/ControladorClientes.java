@@ -27,6 +27,7 @@ public class ControladorClientes {
         this.vista.getBtnGuardar().addActionListener(e -> guardarCliente());
         this.vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
         this.vista.getBtnEliminar().addActionListener(e -> eliminar());
+        vista.getBtnModificar().addActionListener(e -> modificar());
         this.vista.getTablaClientes().addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -78,7 +79,7 @@ public class ControladorClientes {
             cliente r= new cliente(Integer.parseInt(vista.getTxtId().getText()), vista.getTxtNombre().getText(),
                     vista.getTxtTel().getText());
             dao.modificarCliente(r);
-            JOptionPane.showMessageDialog(null,"Se ha actualizado la refacción "+vista.getTxtNombre().getText()+ " :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha actualizado el cliente "+vista.getTxtNombre().getText()+ " :D", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiarCampos();
         } catch (Exception e) {
@@ -90,7 +91,7 @@ public class ControladorClientes {
         try {
             int id= Integer.parseInt(vista.getTxtId().getText());
             dao.eliminarCliente(id);
-            JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Se ha eliminado el cliente "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiarCampos();
         } catch (Exception e) {JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);

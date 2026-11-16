@@ -50,6 +50,7 @@ public class ControladorEmpleado {
         
         vista.getBtnGuardar().addActionListener(e -> guardarEmpleado());
         vista.getBtnLimpiar().addActionListener(e -> limpiarCampos());
+        vista.getBtnEliminar().addActionListener(e -> eliminar());
         this.vista.getTablaEmpleados().addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -60,9 +61,8 @@ public class ControladorEmpleado {
     
     private void cargarRoles(){
         vista.getCboRol().removeAllItems();
-        vista.getCboRol().addItem("Rol");
-        vista.getCboRol().addItem("Rol");
-        vista.getCboRol().addItem("Rol");
+        vista.getCboRol().addItem("Empleado");
+        
     }
     
     private void guardarEmpleado(){
@@ -70,7 +70,7 @@ public class ControladorEmpleado {
         String correo= vista.getTxtCorreo().getText();
         String pass= new String(vista.getTxtpass().getPassword());
         String rol= vista.getCboRol().getSelectedItem().toString();
-        empleado e= new empleado(0, nombre, correo, correo, rol);
+        empleado e= new empleado(0, nombre, correo, pass, rol);
         dao.insertarEmpleado(e);
         cargarTabla();
         limpiarCampos();
@@ -84,7 +84,7 @@ public class ControladorEmpleado {
         
         for (empleado e: lista){
             m.addRow(new Object[]{
-                e.getId(), e.getNombre(), e.getCorreo(), e.getRol()
+                e.getId(), e.getNombre(), e.getCorreo(),e.getContrasena(), e.getRol()
             });
         }
     }
@@ -109,4 +109,18 @@ public class ControladorEmpleado {
 
          }
      }
-}
+    private void eliminar(){
+        try {
+            int id= Integer.parseInt(vista.getTxtId().getText());
+            dao.eliminarEmpleado(id);
+            JOptionPane.showMessageDialog(null,"Se ha eliminado el empleado "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+            limpiarCampos();
+        } catch (Exception e) {JOptionPane.showMessageDialog(null,"Ha ocurrido un error \nError:"+ e, "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
+    }
+    
+
+

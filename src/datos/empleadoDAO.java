@@ -77,7 +77,7 @@ public class empleadoDAO {
         Connection cn= BD.conectarBD();
         
         try {
-            PreparedStatement si= cn.prepareStatement("insert into empleados (nombre,correo,contrasena,rol) values (?.?.?.?)");
+            PreparedStatement si= cn.prepareStatement("insert into empleados (nombre,correo,contrasena,rol) values (?,?,?,?)");
             si.setString(1, e.getNombre());
             si.setString(2, e.getCorreo());
             si.setString(3, e.getContrasena());
@@ -88,5 +88,41 @@ public class empleadoDAO {
             JOptionPane.showMessageDialog(null, "Error al hacer la operacion: " +er);
         }
         BD.cerrarBD();
+    }
+    
+    public empleado obtenerEmpleado(String correo, String contrasena){
+        Connection cn= BD.conectarBD();
+        try {
+            PreparedStatement buscar= cn.prepareStatement("select * from empleados where correo=? and contrasena=?");
+            buscar.setString(1, correo);
+            buscar.setString(2, contrasena);
+            ResultSet rs= buscar.executeQuery();
+            if(rs.next()){
+                return new empleado(rs.getInt("id"), rs.getString("nombre"), 
+                rs.getString("correo"), rs.getString("contrasena"), rs.getString("rol"));
+            }
+        } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+      return null;
+}
+    
+        public void eliminarEmpleado(int id) {
+        
+        Connection cn = BD.conectarBD();
+        
+        try {
+            PreparedStatement eliminar = cn.prepareStatement("DELETE FROM empleados WHERE id = ?");
+            eliminar.setInt(1, id);
+            eliminar.executeUpdate(); 
+                        
+            // JOptionPane.showMessageDialog(null, "Eliminación exitosa");
+            
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar: " +error);
+        }
+        
+        BD.cerrarBD();
+        
     }
 }

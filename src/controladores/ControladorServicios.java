@@ -17,7 +17,9 @@ public class ControladorServicios {
     private autoDAO autoDao;
     private empleadoDAO empleadoDao;
     private refaccionDAO refaccionDao;
-    
+    private List<cliente> listaClientes;
+    private List<auto> listaAutos;
+    private List<empleado> listaEmpleados;
 
      public ControladorServicios(registrarservicio vista) {
          this.vista= vista;
@@ -31,16 +33,15 @@ public class ControladorServicios {
          cargarClientes();
          cargarEmpleados();
          cargarRefacciones();
+         cargarTabla();
          this.vista.getBtnAggRef().addActionListener(e -> agregarRefaccion());
-        /* this.vista.getBtnEliminarRef().addActionListener(e -> eliminarREfaccion());
-         this.vista.getBtnRegServ().addActionListener(e -> registrarServicio());*/
+         this.vista.getBtnRegServ().addActionListener(e -> registrarServicio());
         this.vista.getTablaRef().addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
                 seleccionarFila();
             }
         });
-         
      
      }
      
@@ -56,7 +57,7 @@ public class ControladorServicios {
          vista.getCboEmpleado().setSelectedItem(vista.getTablaRef().getValueAt(fila, 4).toString());
          vista.getTxtPersonaEntrega().setText(vista.getTablaRef().getValueAt(fila, 5).toString());
              try {
-                 SimpleDateFormat formato= new SimpleDateFormat("yyy-MM-dd");
+                 SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
                  Date fecha= formato.parse(vista.getTablaRef().getValueAt(fila, 6).toString());
                  vista.getJdcFecha().setDate(fecha);
              } catch (Exception e) {
@@ -69,21 +70,24 @@ public class ControladorServicios {
      }
      
      private void cargarClientes(){
+         listaClientes= clienteDao.listarClientes();
          vista.getCboCliente().removeAllItems();
-         for (cliente c: clienteDao.listarClientes()){
+         for (cliente c: listaClientes){
              vista.getCboCliente().addItem(c.getNombre());
          }
      }
     private void cargarAutos(){
+        listaAutos= autoDao.listarAutos();
         vista.getCboAuto().removeAllItems();
-        for( auto a: autoDao.listarAutos()){
+        for( auto a: listaAutos){
             vista.getCboAuto().addItem(a.getModelo());
         }
     }
     
     private void cargarEmpleados(){
+        listaEmpleados= empleadoDao.listarEmpleados();
         vista.getCboEmpleado().removeAllItems();
-        for( empleado e: empleadoDao.listarEmpleados()){
+        for( empleado e: listaEmpleados){
             vista.getCboEmpleado().addItem(e.getNombre());
         }
     }
@@ -91,7 +95,7 @@ public class ControladorServicios {
     private void cargarRefacciones(){
         vista.getCboRefaccion().removeAllItems();
         for( refaccion a: refaccionDao.listarRefaccion()){
-            vista.getCboAuto().addItem(a.getNombre());
+            vista.getCboRefaccion().addItem(a.getNombre());
         }
     }
     
@@ -99,12 +103,53 @@ public class ControladorServicios {
         String nombre= vista.getCboRefaccion().getSelectedItem().toString();
         
         DefaultTableModel m= (DefaultTableModel) vista.getTablaRef().getModel();
-        m.addRow(new Object[] {"", nombre, ""});
+        m.addRow(new Object[]{"",
+        vista.getTxtFolio().getText(),
+        vista.getCboCliente().getSelectedItem(),
+        vista.getCboAuto().getSelectedItem(),
+        vista.getCboEmpleado().getSelectedItem(),
+        vista.getTxtPersonaEntrega().getText(),
+        vista.getJdcFecha().getDate(),
+        nombre});
     }
 
      
+     private void registrarServicio(){
+
+    try{
+        String folio =vista.getTxtFolio().getText();
+        String personaEntrega =vista.getTxtPersonaEntrega().getText();
+        Date fechaProxima = vista.getJdcFecha().getDate();
+        cliente clienteSel= listaClientes.get(vista.getCboCliente().getSelectedIndex());
+        auto autoSel= listaAutos.get(vista.getCboAuto().getSelectedIndex());
+        empleado empeladoSel= listaEmpleados.get(vista.getCboEmpleado().getSelectedIndex());
+        int idCliente= clienteSel.getId();
+        int idAuto= autoSel.getId();
+        int idEmpleado= empeladoSel.getId();
+        servicio s = new servicio( folio, idCliente, idAuto,  idEmpleado,  personaEntrega,     new Date(), fechaProxima );
+        servicioDao.insertarServicio(s);
+        JOptionPane.showMessageDialog( null, "Servicio registrado correctamente" );
+
+    }catch(Exception e){
+        JOptionPane.showMessageDialog( null,"Error: " + e.getMessage() );
+
+    }
+
+}
      
      
+     private void cargarTabla(){
+         DefaultTableModel modelo =(DefaultTableModel) vista.getTablaRef().getModel();
+         modelo.setRowCount(0);
+         List <servicio> lista= servicioDao.listarServicios();
+         for(servicio s:lista){
+             modelo.addRow(new Object[]{
+                 s.getId(), s.getFolio(), s.getIdCliente(), s.getIdAuto(),
+                 s.getIdEmpleado(), s.getPersonaEntrega(), s.getFechaProxServicio(),
+                 s.getNombreEstado()
+             });
+         }
+     }
      
      
      /*

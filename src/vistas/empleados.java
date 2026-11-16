@@ -35,9 +35,7 @@ public class empleados extends javax.swing.JPanel {
         return btnLimpiar;
     }
 
-    public JButton getBtnModificar() {
-        return btnModificar;
-    }
+
 
     public JComboBox<String> getCboRol() {
         return cboRol;
@@ -91,7 +89,6 @@ public class empleados extends javax.swing.JPanel {
         lblano1 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaEmpleados = new javax.swing.JTable();
@@ -165,7 +162,7 @@ public class empleados extends javax.swing.JPanel {
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 120, 30));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 120, 30));
 
         btnGuardar.setBackground(new java.awt.Color(255, 204, 102));
         btnGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -173,17 +170,11 @@ public class empleados extends javax.swing.JPanel {
         btnGuardar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 120, 30));
 
-        btnModificar.setBackground(new java.awt.Color(102, 255, 204));
-        btnModificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 120, 30));
-
         btnLimpiar.setBackground(new java.awt.Color(255, 255, 153));
         btnLimpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 120, 30));
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 120, 30));
 
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -214,7 +205,6 @@ public class empleados extends javax.swing.JPanel {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> cboRol;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel3;

@@ -4,6 +4,7 @@
  */
 package controladores;
 import java.awt.*;
+import vistas.Inicio;
 import vistas.autos;
 import vistas.clientes;
 import vistas.consultarservicio;
@@ -53,6 +54,9 @@ public ControladorPrincipal(principal vista) {
         mostrarVista(panel);
      });
     
+    Inicio inicio= new Inicio();
+    new ControladorInicio(inicio);
+    mostrarVista(inicio);
 
 }
                 
