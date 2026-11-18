@@ -107,22 +107,27 @@ public class empleadoDAO {
       return null;
 }
     
-        public void eliminarEmpleado(int id) {
-        
+    /** @return true si se eliminó; false si no (ya se mostró el motivo). */
+    public boolean eliminarEmpleado(int id) {
+
         Connection cn = BD.conectarBD();
-        
+        boolean eliminado = false;
+
         try {
             PreparedStatement eliminar = cn.prepareStatement("DELETE FROM empleados WHERE id = ?");
             eliminar.setInt(1, id);
-            eliminar.executeUpdate(); 
-                        
-            // JOptionPane.showMessageDialog(null, "Eliminación exitosa");
-            
+            eliminado = eliminar.executeUpdate() > 0;
+            if (!eliminado) {
+                JOptionPane.showMessageDialog(null, "No se encontró el empleado a eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLIntegrityConstraintViolationException error) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el empleado porque tiene servicios asociados.", "No se pudo eliminar", JOptionPane.WARNING_MESSAGE);
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error al eliminar: " +error);
         }
-        
+
         BD.cerrarBD();
-        
+        return eliminado;
+
     }
 }

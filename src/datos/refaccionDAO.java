@@ -72,16 +72,23 @@ public class refaccionDAO {
         BD.cerrarBD();
     }
     
-    public void eliminarRefaccion(int id){
+    /** @return true si se eliminó; false si no (ya se mostró el motivo). */
+    public boolean eliminarRefaccion(int id){
         Connection cn= BD.conectarBD();
+        boolean eliminado = false;
         try {
             PreparedStatement eliminar= cn.prepareStatement("delete from refacciones where id=?");
             eliminar.setInt(1, id);
-            eliminar.executeUpdate();
-                    
+            eliminado = eliminar.executeUpdate() > 0;
+            if (!eliminado) {
+                JOptionPane.showMessageDialog(null, "No se encontró la refacción a eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar la refacción porque está usada en servicios.", "No se pudo eliminar", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
         JOptionPane.showMessageDialog(null,"Ha ocurrido un error "+ e, "Error", JOptionPane.ERROR_MESSAGE);
         }
         BD.cerrarBD();
+        return eliminado;
     }
 }

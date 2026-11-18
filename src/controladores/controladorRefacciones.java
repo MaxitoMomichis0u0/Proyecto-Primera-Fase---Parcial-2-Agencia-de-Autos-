@@ -96,7 +96,9 @@ public class controladorRefacciones {
     private void eliminar(){
         try {
             int id= Integer.parseInt(vista.getTxtId().getText());
-            dao.eliminarRefaccion(id);
+            if (!dao.eliminarRefaccion(id)) {
+                return;
+            }
             JOptionPane.showMessageDialog(null,"Se ha eliminado la refacción "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiar();

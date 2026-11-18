@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import modelos.Sesion;
 import vistas.Inicio;
 import vistas.autos;
+import vistas.dashboard;
 import vistas.clientes;
 import vistas.consultarservicio;
 import vistas.empleados;
@@ -64,6 +65,12 @@ public ControladorPrincipal(principal vista) {
     this.vista.getConServ().addActionListener(e ->{
         consultarservicio panel= new consultarservicio();
         new ControladorConsultarServicios(panel);
+        mostrarVista(panel);
+    });
+
+    this.vista.getMenuDashboard().addActionListener(e -> {
+        dashboard panel = new dashboard();
+        new ControladorDashboard(panel);
         mostrarVista(panel);
     });
 

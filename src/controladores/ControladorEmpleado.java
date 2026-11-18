@@ -112,7 +112,9 @@ public class ControladorEmpleado {
     private void eliminar(){
         try {
             int id= Integer.parseInt(vista.getTxtId().getText());
-            dao.eliminarEmpleado(id);
+            if (!dao.eliminarEmpleado(id)) {
+                return;
+            }
             JOptionPane.showMessageDialog(null,"Se ha eliminado el empleado "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiarCampos();

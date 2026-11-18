@@ -1,0 +1,195 @@
+@startuml diagrama-clases
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam roundcorner 10
+skinparam ArrowColor #660066
+skinparam class {
+  BackgroundColor #F6EEF8
+  BorderColor #660066
+  FontSize 12
+}
+skinparam package {
+  BorderColor #8A8498
+  FontColor #2B2438
+}
+title Agencia de Autos - Diagrama de clases (MVC + State + Singleton + Observer)
+
+package "patrones" {
+  interface EstadosServicio {
+    +AvanzarEstado(serv: servicio): void
+    +getNombreEstado(): String
+  }
+  class EstadoEnEspera
+  class EstadoEnProceso
+  class EstadoFinalizado
+
+  class conexion <<Singleton>> {
+    -conexion: Connection
+    -instancia: conexion
+    -conexion()
+    +getInstance(): conexion
+    +conectarBD(): Connection
+    +cerrarBD(): void
+  }
+
+  interface Observador {
+    +actualizar(): void
+  }
+  class EventosServicio <<Sujeto / Singleton>> {
+    -instancia: EventosServicio
+    -observadores: List<Observador>
+    +getInstance(): EventosServicio
+    +suscribir(o: Observador): void
+    +desuscribir(o: Observador): void
+    +notificar(): void
+  }
+}
+
+package "modelos" {
+  class servicio {
+    -id: int
+    -folio: String
+    -idCliente: int
+    -idAuto: int
+    -idEmpleado: int
+    -fechaIngreso: Date
+    -fechaProxServicio: Date
+    -personaEntrega: String
+    -listaRefacciones: List<Integer>
+    +avanzarEstado(): void
+    +getNombreEstado(): String
+    +agregarRefaccion(idRefaccion: int): void
+  }
+  class cliente {
+    -id: int
+    -nombre: String
+    -telefono: String
+  }
+  class auto {
+    -id: int
+    -modelo: String
+    -marca: String
+    -ano: int
+    -caracteristicas: String
+  }
+  class empleado {
+    -id: int
+    -nombre: String
+    -correo: String
+    -contrasena: String
+    -rol: String
+  }
+  class refaccion {
+    -id: int
+    -nombre: String
+    -precio: double
+  }
+  class Sesion {
+    -id: int {static}
+    -usuario: String {static}
+    -correo: String {static}
+    -rol: String {static}
+    +cerrarSesion(): void {static}
+  }
+  class DatosDashboard {
+    +totalServicios: int
+    +enEspera: int
+    +enProceso: int
+    +finalizados: int
+    +clientes: int
+    +autos: int
+    +empleados: int
+    +ingresosRefacciones: double
+    +serviciosPorMes: Map<String,Integer>
+    +topRefacciones: Map<String,Integer>
+    +recientes: List<String[]>
+    +proximos: List<String[]>
+  }
+}
+
+package "datos" {
+  class servicioDAO {
+    +listarServicios(): List<servicio>
+    +insertarServicio(s: servicio): void
+    +actualizarEstatus(s: servicio): void
+    +agregarRefaccionesAlServicio(idServ: int, idRef: int): void
+    +obtenerServicio(id: int): servicio
+  }
+  class clienteDAO
+  class autoDAO
+  class empleadoDAO
+  class refaccionDAO
+  class dashboardDAO {
+    +obtenerResumen(): DatosDashboard
+  }
+}
+
+package "vistas" {
+  class principal <<JFrame>> {
+    +getContenedor(): JPanel
+    +getMenuDashboard(): JMenuItem
+  }
+  class dashboard <<JPanel>> {
+    +getBtnActualizar(): JButton
+    +mostrar(d: DatosDashboard): void
+  }
+  class registrarservicio <<JPanel>>
+  class consultarservicio <<JPanel>>
+}
+
+package "controladores" {
+  class ControladorPrincipal
+  class ControladorServicios
+  class ControladorConsultarServicios
+  class ControladorDashboard {
+    -vista: dashboard
+    -dao: dashboardDAO
+    +actualizar(): void
+  }
+}
+
+' ---- State ----
+EstadosServicio <|.. EstadoEnEspera
+EstadosServicio <|.. EstadoEnProceso
+EstadosServicio <|.. EstadoFinalizado
+servicio o--> "1" EstadosServicio : estatus
+EstadoEnEspera ..> EstadoEnProceso : avanza a
+EstadoEnProceso ..> EstadoFinalizado : avanza a
+
+' ---- Singleton ----
+servicioDAO ..> conexion
+clienteDAO ..> conexion
+autoDAO ..> conexion
+empleadoDAO ..> conexion
+refaccionDAO ..> conexion
+dashboardDAO ..> conexion
+
+' ---- Observer ----
+EventosServicio o--> "*" Observador
+ControladorDashboard ..|> Observador
+servicioDAO ..> EventosServicio : notificar()
+
+' ---- Modelo ----
+servicio "*" --> "1" cliente
+servicio "*" --> "1" auto
+servicio "*" --> "1" empleado
+servicio "*" --> "*" refaccion : refaccion_por_servicio
+
+' ---- MVC ----
+ControladorPrincipal --> principal
+ControladorPrincipal ..> ControladorDashboard : crea
+ControladorPrincipal ..> ControladorServicios : crea
+ControladorPrincipal ..> ControladorConsultarServicios : crea
+ControladorDashboard --> dashboard
+ControladorDashboard --> dashboardDAO
+dashboardDAO ..> DatosDashboard : produce
+dashboard ..> DatosDashboard : muestra
+ControladorServicios --> registrarservicio
+ControladorServicios --> servicioDAO
+ControladorConsultarServicios --> consultarservicio
+ControladorConsultarServicios --> servicioDAO
+principal *-- dashboard : contenedor
+
+@enduml

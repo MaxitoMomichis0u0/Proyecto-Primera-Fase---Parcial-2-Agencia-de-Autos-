@@ -90,7 +90,9 @@ public class ControladorClientes {
     private void eliminar(){
         try {
             int id= Integer.parseInt(vista.getTxtId().getText());
-            dao.eliminarCliente(id);
+            if (!dao.eliminarCliente(id)) {
+                return;
+            }
             JOptionPane.showMessageDialog(null,"Se ha eliminado el cliente "+vista.getTxtNombre().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiarCampos();

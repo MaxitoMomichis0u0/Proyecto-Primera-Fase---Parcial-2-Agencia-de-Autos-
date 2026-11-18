@@ -94,7 +94,9 @@ public class ControladorAutos {
     private void eliminar(){
         try {
             int id= Integer.parseInt(vista.getTxtId().getText());
-            dao.eliminarAuto(id);
+            if (!dao.eliminarAuto(id)) {
+                return;
+            }
             JOptionPane.showMessageDialog(null,"Se ha eliminado el auto "+vista.getTxtModelo().getText()+ " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
             limpiarCampos();

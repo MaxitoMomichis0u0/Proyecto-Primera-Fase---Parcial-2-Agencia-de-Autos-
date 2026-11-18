@@ -84,17 +84,25 @@ public class clienteDAO {
         BD.cerrarBD();
     }
     
-    public void eliminarCliente(int id){
+    /** @return true si se eliminó; false si no (ya se mostró el motivo). */
+    public boolean eliminarCliente(int id){
         Connection cn= BD.conectarBD();
-        
+        boolean eliminado = false;
+
         try {
             PreparedStatement eliminar= cn.prepareStatement("delete from clientes where id=?");
             eliminar.setInt(1, id);
-            eliminar.executeUpdate();
+            eliminado = eliminar.executeUpdate() > 0;
+            if (!eliminado) {
+                JOptionPane.showMessageDialog(null, "No se encontró el cliente a eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el cliente porque tiene servicios asociados.", "No se pudo eliminar", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error:" +e);
         }
         BD.cerrarBD();
+        return eliminado;
     }
     
     public void iniciarSesion(){

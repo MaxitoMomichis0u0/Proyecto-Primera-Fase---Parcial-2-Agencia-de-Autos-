@@ -27,6 +27,7 @@ public class ControladorConsultarServicios {
         cargarTabla();
         vista.getBtnBuscar().addActionListener(e -> buscar());
         vista.getBtnEstado().addActionListener(e -> avanzarEstado());
+        vista.getBtnEliminar().addActionListener(e -> eliminar());
         vista.getTxtFolio().getDocument().addDocumentListener(new DocumentListener(){
 
             @Override
@@ -46,6 +47,27 @@ public class ControladorConsultarServicios {
         });
     }
     
+    private void eliminar(){
+        int fila= vista.getTablaServ().getSelectedRow();
+        if(fila<0){
+            JOptionPane.showMessageDialog(null, "Selecciona un servicio, porfas.");
+            return;
+        }
+        int id= Integer.parseInt(vista.getTablaServ().getValueAt(fila, 0).toString());
+        String folio= vista.getTablaServ().getValueAt(fila, 1).toString();
+
+        int op= JOptionPane.showConfirmDialog(null,
+                "¿Eliminar el servicio " + folio + " y sus refacciones asociadas?",
+                "Confirmar eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(op != JOptionPane.YES_OPTION){
+            return;
+        }
+        if(dao.eliminarServicio(id)){
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el servicio " + folio + " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+        }
+    }
+
     public void avanzarEstado(){
         int fila= vista.getTablaServ().getSelectedRow();
         if(fila<0){

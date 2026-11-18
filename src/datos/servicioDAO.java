@@ -88,6 +88,7 @@ public void insertarServicio(servicio s) {
         insertar.setString( 6,  s.getPersonaEntrega() );
 
         insertar.executeUpdate();
+        EventosServicio.getInstance().notificar();
     } catch (Exception error) {
         JOptionPane.showMessageDialog( null, "Error al insertar servicio: "+ error);
     }
@@ -106,6 +107,7 @@ public void insertarServicio(servicio s) {
             actualizar.setString(1, s.getNombreEstado());
             actualizar.setInt(2, s.getId());
             actualizar.executeUpdate();
+            EventosServicio.getInstance().notificar();
             
             // JOptionPane.showMessageDialog(null, "Se ha avanzado de estatus corectamente");
             
@@ -128,6 +130,7 @@ public void insertarServicio(servicio s) {
             agregarRef.setInt(1, idServ);
             agregarRef.setInt(2, idRef);
             agregarRef.executeUpdate();
+            EventosServicio.getInstance().notificar();
             
             // JOptionPane.showMessageDialog(null, "Refaccion agregada al informe del servicio");
             
@@ -142,6 +145,38 @@ public void insertarServicio(servicio s) {
 
     }
     
+    /** Elimina un servicio junto con sus refacciones asociadas (en una sola transacción). */
+    public boolean eliminarServicio(int id) {
+
+        Connection cn = BD.conectarBD();
+        boolean eliminado = false;
+
+        try {
+            cn.setAutoCommit(false);
+            try (PreparedStatement quitarRef = cn.prepareStatement("DELETE FROM refaccion_por_servicio WHERE id_servicio = ?");
+                 PreparedStatement quitarServ = cn.prepareStatement("DELETE FROM servicios WHERE id = ?")) {
+                quitarRef.setInt(1, id);
+                quitarRef.executeUpdate();
+                quitarServ.setInt(1, id);
+                eliminado = quitarServ.executeUpdate() > 0;
+                cn.commit();
+            } catch (Exception error) {
+                cn.rollback();
+                throw error;
+            } finally {
+                cn.setAutoCommit(true);
+            }
+            if (eliminado) {
+                EventosServicio.getInstance().notificar();
+            }
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el servicio: " + error);
+        }
+
+        BD.cerrarBD();
+        return eliminado;
+    }
+
     public void buscarPorFolio(String folio) {
         
         Connection cn = BD.conectarBD();

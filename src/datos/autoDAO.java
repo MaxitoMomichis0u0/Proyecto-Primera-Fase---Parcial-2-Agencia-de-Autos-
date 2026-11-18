@@ -100,23 +100,28 @@ public class autoDAO {
         
     }
     
-    public void eliminarAuto(int id) {
-        
+    /** @return true si se eliminó; false si no (ya se mostró el motivo). */
+    public boolean eliminarAuto(int id) {
+
         Connection cn = BD.conectarBD();
-        
+        boolean eliminado = false;
+
         try {
             PreparedStatement eliminar = cn.prepareStatement("DELETE FROM autos WHERE id = ?");
             eliminar.setInt(1, id);
-            eliminar.executeUpdate(); 
-                        
-            // JOptionPane.showMessageDialog(null, "Eliminación exitosa");
-            
+            eliminado = eliminar.executeUpdate() > 0;
+            if (!eliminado) {
+                JOptionPane.showMessageDialog(null, "No se encontró el auto a eliminar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLIntegrityConstraintViolationException error) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el auto porque tiene servicios asociados.", "No se pudo eliminar", JOptionPane.WARNING_MESSAGE);
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Error al eliminar: " +error);
         }
-        
+
         BD.cerrarBD();
-        
+        return eliminado;
+
     }
     
     public void buscarAuto(int id) {
