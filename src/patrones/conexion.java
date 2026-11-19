@@ -11,7 +11,7 @@ public class conexion {
     
     private static final String url = "jdbc:mysql://localhost/agencia_de_autos";
     private static final String user = "root";
-    private static final String pass = "admin";
+    private static final String pass = "";
 
     private conexion() {
         
