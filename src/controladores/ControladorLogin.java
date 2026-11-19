@@ -65,6 +65,5 @@ public ControladorLogin(login vista) {
     }
     
     
-    
-    
+
 }

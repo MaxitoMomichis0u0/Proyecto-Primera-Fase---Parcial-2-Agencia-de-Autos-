@@ -104,7 +104,7 @@ public class login extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 110, 40));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 130, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

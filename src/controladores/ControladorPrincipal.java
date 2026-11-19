@@ -26,7 +26,7 @@ public class ControladorPrincipal {
 public ControladorPrincipal(principal vista) {
 
     this.vista = vista;
-
+     permisos();
     this.vista.getMenuRegServ()
     .addActionListener(e -> {
         registrarservicio panel = new registrarservicio();
@@ -101,5 +101,9 @@ public ControladorPrincipal(principal vista) {
                     }
                 }
                         
-    
+    private void permisos(){
+        if(Sesion.getRol().equalsIgnoreCase("Empleado")){
+            vista.getMenuEmpleados().setVisible(false);
+        }
+    }
 }

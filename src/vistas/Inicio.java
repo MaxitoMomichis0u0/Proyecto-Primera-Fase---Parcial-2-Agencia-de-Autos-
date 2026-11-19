@@ -56,7 +56,7 @@ public class Inicio extends javax.swing.JPanel {
 
         jPanel7.add(jPanel9);
 
-        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 1300, 40));
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 1300, 50));
 
         jPanel3.setBackground(new java.awt.Color(255, 0, 51));
 
