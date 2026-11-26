@@ -101,6 +101,7 @@ public class registrarservicio extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1300, 750));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtFolio.setEditable(false);
         txtFolio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFolio.setToolTipText("");
         add(txtFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 280, -1));

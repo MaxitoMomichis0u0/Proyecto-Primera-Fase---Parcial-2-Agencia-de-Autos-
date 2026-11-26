@@ -73,7 +73,7 @@ public class ControladorConsultarServicios {
         });
     }
     
-    /** Obtiene el servicio que corresponde al folio escrito; avisa si esta vacio o no existe. */
+  
     private servicio servicioPorFolio(){
         String folio= vista.getTxtFolio().getText().trim();
         if(folio.isEmpty()){
