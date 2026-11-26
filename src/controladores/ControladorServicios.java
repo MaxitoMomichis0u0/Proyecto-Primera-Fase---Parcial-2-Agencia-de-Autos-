@@ -35,6 +35,7 @@ public class ControladorServicios {
          cargarEmpleados();
          cargarRefacciones();
          cargarTabla();
+         asignarFolio();
          this.vista.getBtnAggRef().addActionListener(e -> agregarRefaccion());
          this.vista.getBtnRegServ().addActionListener(e -> registrarServicio());
         this.vista.getTablaRef().addMouseListener(new MouseAdapter(){
@@ -46,6 +47,12 @@ public class ControladorServicios {
      
      }
      
+     /** Pone en el campo de folio un folio nuevo que no existe en la base de datos. */
+     private void asignarFolio(){
+         vista.getTxtFolio().setText(servicioDao.generarFolioUnico());
+         vista.getTxtFolio().setEditable(false);
+     }
+
      public void seleccionarFila(){
          
          
@@ -121,7 +128,12 @@ public class ControladorServicios {
      private void registrarServicio(){
 
     try{
-        String folio =vista.getTxtFolio().getText();
+        String folio =vista.getTxtFolio().getText().trim();
+        if(folio.isEmpty() || servicioDao.existeFolio(folio)){
+            asignarFolio();
+            JOptionPane.showMessageDialog(null, "Ese folio ya existe en la base de datos. Se genero uno nuevo: " + vista.getTxtFolio().getText() + "\nRevisa los datos y vuelve a registrar.");
+            return;
+        }
         String personaEntrega =vista.getTxtPersonaEntrega().getText();
         Date fechaProxima = vista.getJdcFecha().getDate();
         cliente clienteSel= listaClientes.get(vista.getCboCliente().getSelectedIndex());
@@ -141,6 +153,7 @@ public class ControladorServicios {
         JOptionPane.showMessageDialog( null, "Servicio "+folio+" registrado correctamente" );
         new Comprobante(null, comprobante).setVisible(true);
         cargarTabla();
+        asignarFolio();
     }catch(Exception e){
         JOptionPane.showMessageDialog( null,"Error: " + e.getMessage() );
 

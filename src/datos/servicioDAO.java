@@ -264,6 +264,33 @@ public void insertarServicio(servicio s) {
         }
         return null;
     }
+    /** Indica si ya existe un servicio con ese folio. */
+    public boolean existeFolio(String folio){
+        Connection cn= BD.conectarBD();
+        boolean existe= false;
+        try {
+            PreparedStatement consulta= cn.prepareStatement("select 1 from servicios where folio=? limit 1");
+            consulta.setString(1, folio);
+            existe= consulta.executeQuery().next();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al verificar el folio: " + e.getMessage());
+        }
+        BD.cerrarBD();
+        return existe;
+    }
+
+    /** Genera un folio SRV-aaaammdd-nnnn que no exista todavia en la base de datos. */
+    public String generarFolioUnico(){
+        String prefijo= "SRV-" + new java.text.SimpleDateFormat("yyyyMMdd").format(new java.util.Date()) + "-";
+        int n= 1;
+        String folio= prefijo + String.format("%04d", n);
+        while(existeFolio(folio)){
+            n++;
+            folio= prefijo + String.format("%04d", n);
+        }
+        return folio;
+    }
+
     /** Busca un servicio por su folio exacto; devuelve null si no existe. */
     public servicio obtenerServicioPorFolio(String folio){
         Connection cn= BD.conectarBD();
