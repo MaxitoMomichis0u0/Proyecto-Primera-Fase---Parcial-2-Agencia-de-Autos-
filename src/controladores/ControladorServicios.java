@@ -136,7 +136,10 @@ public class ControladorServicios {
         for(Integer idRef: refaccionesSeleccionadas){
         servicioDao.agregarRefaccionesAlServicio(idServicio, idRef);
     }
+        String comprobante= armarComprobante(s, clienteSel, autoSel, empeladoSel);
+        refaccionesSeleccionadas.clear();
         JOptionPane.showMessageDialog( null, "Servicio "+folio+" registrado correctamente" );
+        new Comprobante(null, comprobante).setVisible(true);
         cargarTabla();
     }catch(Exception e){
         JOptionPane.showMessageDialog( null,"Error: " + e.getMessage() );
@@ -145,7 +148,43 @@ public class ControladorServicios {
 
 }
      
-     
+     private String armarComprobante(servicio s, cliente c, auto a, empleado e){
+         SimpleDateFormat f= new SimpleDateFormat("dd/MM/yyyy");
+         StringBuilder sb= new StringBuilder();
+         sb.append("      AGENCIA DE AUTOMOVILES\n");
+         sb.append("   COMPROBANTE DE SERVICIO\n");
+         sb.append("==================================\n");
+         sb.append("Folio:             ").append(s.getFolio()).append("\n");
+         sb.append("Fecha de ingreso:  ").append(f.format(s.getFechaIngreso())).append("\n");
+         sb.append("Estatus:           ").append(s.getNombreEstado()).append("\n");
+         sb.append("----------------------------------\n");
+         sb.append("CLIENTE\n");
+         sb.append("  Nombre:   ").append(c.getNombre()).append("\n");
+         sb.append("  Telefono: ").append(c.getTelefono()).append("\n");
+         sb.append("VEHICULO\n");
+         sb.append("  ").append(a.getMarca()).append(" ").append(a.getModelo()).append(" ").append(a.getAno()).append("\n");
+         sb.append("Entregado por:     ").append(s.getPersonaEntrega()).append("\n");
+         sb.append("Atendio:           ").append(e.getNombre()).append("\n");
+         sb.append("Proximo servicio:  ").append(s.getFechaProxServicio() == null ? "-" : f.format(s.getFechaProxServicio())).append("\n");
+         sb.append("----------------------------------\n");
+         sb.append("REFACCIONES\n");
+         double total= 0;
+         if(refaccionesSeleccionadas.isEmpty()){
+             sb.append("  (sin refacciones)\n");
+         }
+         for(Integer idRef: refaccionesSeleccionadas){
+             for(refaccion r: listaRefacciones){
+                 if(r.getId()==idRef){
+                     sb.append(String.format("  %-22s $%9.2f\n", r.getNombre(), r.getPrecio()));
+                     total+= r.getPrecio();
+                 }
+             }
+         }
+         sb.append("----------------------------------\n");
+         sb.append(String.format("TOTAL REFACCIONES:    $%9.2f\n", total));
+         return sb.toString();
+     }
+
      private void cargarTabla(){
          DefaultTableModel modelo =(DefaultTableModel) vista.getTablaRef().getModel();
          modelo.setRowCount(0);
