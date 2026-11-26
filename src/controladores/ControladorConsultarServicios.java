@@ -73,14 +73,26 @@ public class ControladorConsultarServicios {
         });
     }
     
+    /** Obtiene el servicio que corresponde al folio escrito; avisa si esta vacio o no existe. */
+    private servicio servicioPorFolio(){
+        String folio= vista.getTxtFolio().getText().trim();
+        if(folio.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Escribe el folio del servicio, porfas.");
+            return null;
+        }
+        servicio s= dao.obtenerServicioPorFolio(folio);
+        if(s == null){
+            JOptionPane.showMessageDialog(null, "No existe ningun servicio con el folio " + folio);
+        }
+        return s;
+    }
+
     private void eliminar(){
-        int fila= vista.getTablaServ().getSelectedRow();
-        if(fila<0){
-            JOptionPane.showMessageDialog(null, "Selecciona un servicio, porfas.");
+        servicio s= servicioPorFolio();
+        if(s == null){
             return;
         }
-        int id= Integer.parseInt(vista.getTablaServ().getValueAt(fila, 0).toString());
-        String folio= vista.getTablaServ().getValueAt(fila, 1).toString();
+        String folio= s.getFolio();
 
         int op= JOptionPane.showConfirmDialog(null,
                 "¿Eliminar el servicio " + folio + " y sus refacciones asociadas?",
@@ -88,26 +100,21 @@ public class ControladorConsultarServicios {
         if(op != JOptionPane.YES_OPTION){
             return;
         }
-        if(dao.eliminarServicio(id)){
+        if(dao.eliminarServicio(s.getId())){
             JOptionPane.showMessageDialog(null, "Se ha eliminado el servicio " + folio + " :D", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            vista.getTxtFolio().setText("");
             cargarTabla();
         }
     }
 
     public void avanzarEstado(){
-        int fila= vista.getTablaServ().getSelectedRow();
-        if(fila<0){
-            JOptionPane.showMessageDialog(null, "Selecciona un servicio, porfas.");
+        servicio s= servicioPorFolio();
+        if(s == null){
             return;
         }
-        int id= Integer.parseInt(vista.getTablaServ().getValueAt(fila, 0).toString());
-        
-        servicio s= dao.obtenerServicio(id);
-        if(s!= null){
-            s.avanzarEstado();
-            dao.actualizarEstatus(s);
-            cargarTabla();
-        }
+        s.avanzarEstado();
+        dao.actualizarEstatus(s);
+        cargarTabla();
     }
     
     

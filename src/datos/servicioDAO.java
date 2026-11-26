@@ -264,6 +264,30 @@ public void insertarServicio(servicio s) {
         }
         return null;
     }
+    /** Busca un servicio por su folio exacto; devuelve null si no existe. */
+    public servicio obtenerServicioPorFolio(String folio){
+        Connection cn= BD.conectarBD();
+        try {
+            PreparedStatement buscar= cn.prepareStatement("select * from servicios where folio=?");
+            buscar.setString(1, folio);
+            ResultSet rs= buscar.executeQuery();
+            if(rs.next()){
+                return new servicio(
+                rs.getInt("id"),
+                rs.getString("folio"),
+                rs.getInt("id_cliente"),
+                rs.getInt("id_auto"),
+                rs.getInt("id_empleado"),
+                rs.getDate("fecha_ingreso"),
+                convertirTextoAEstado(rs.getString("estatus")),
+                rs.getDate("fecha_siguiente_servicio"),
+                rs.getString("persona_entrega"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar el servicio: " + e.getMessage());
+        }
+        return null;
+    }
     /* Puede funcionar pero tendria que meter mas cosas xd
     public void buscarPorNombre (String nombre) {
         
